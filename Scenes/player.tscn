@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://bc1euhddiry3i"]
+
+[ext_resource type="Script" uid="uid://ccgxbkugumg2j" path="res://Scenes/player.gd" id="1_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://hwaaiuuc6bjq" path="res://Resource/Graphics/material_1.png" id="1_v0iea"]
+
+[node name="Player" type="Node2D" groups=["GameObject"]]
+script = ExtResource("1_cvnsp")
+sound_absorb = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_v0iea")
+region_enabled = true
+region_rect = Rect2(0, 0, 8, 8)
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Right" type="Sprite2D" parent="Node"]
+position = Vector2(2, 0)
+texture = ExtResource("1_v0iea")
+region_enabled = true
+region_rect = Rect2(29, 11, 2, 2)
+
+[node name="Up" type="Sprite2D" parent="Node"]
+position = Vector2(0, -2)
+texture = ExtResource("1_v0iea")
+region_enabled = true
+region_rect = Rect2(11, 9, 2, 2)
+
+[node name="Left" type="Sprite2D" parent="Node"]
+position = Vector2(-2, 0)
+texture = ExtResource("1_v0iea")
+region_enabled = true
+region_rect = Rect2(1, 11, 2, 2)
+
+[node name="Down" type="Sprite2D" parent="Node"]
+position = Vector2(0, 2)
+texture = ExtResource("1_v0iea")
+region_enabled = true
+region_rect = Rect2(19, 13, 2, 2)

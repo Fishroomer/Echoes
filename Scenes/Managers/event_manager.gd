@@ -11,20 +11,31 @@ var doors_password = {
 	0: [[0,0,0,0,1],[0,0,0,1,1]]
 } # 储存所有门的密码
 
+var note_position = {
+	0:[Vector2(0,0),Vector2(0,0)],
+	1:[Vector2(100,0),Vector2(0,0)],
+	2:[Vector2(200,0),Vector2(0,0)],
+	3:[Vector2(300,0),Vector2(0,0)]
+}
+
 var player_position:Vector2i = Vector2i(0,0)
 var current_room:int = 0
+var current_map:TileMapLayer
 var player_spawn_position:Vector2i = Vector2i(0,0)
 
 var notes_history := [] # 最近40次音符
 var notes := [0,0,0,0,0]  # 当前输入音符
 
-@warning_ignore("unused_signal")
-signal play_note(note_number:int)
-
 signal open_door(door_number:int)
 
 @warning_ignore("unused_signal")
+signal note_absorb(note_number:int)
+
+@warning_ignore("unused_signal")
 signal change_room(room_number:int,camera_position:Vector2,new_player_spawn_position:Vector2i)
+
+func play_note(note_number:int):
+	notes[note_number] = 1
 
 # 二进制数组 → 索引
 func notes_to_index(arr: Array) -> int:

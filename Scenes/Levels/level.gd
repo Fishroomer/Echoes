@@ -2,7 +2,7 @@ extends Node2D
 
 @export var camera_Position:Vector2
 @export var player_respawn_position:Vector2
-
+@export var map:TileMapLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

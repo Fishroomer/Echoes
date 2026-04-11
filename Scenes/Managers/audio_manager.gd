@@ -11,10 +11,7 @@ func play_sfx(sfxname:String):
 		return
 	player.play()
 
-func play_bgm(stream:AudioStream):
-	if bgm_player.stream == stream and bgm_player.playing:
-		return
-	bgm_player.stream = stream
+func play_bgm():
 	bgm_player.play()
 
 func get_volume(bus_index: int) -> float:

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://jd6trhqst8d2"]
+
+[ext_resource type="Script" uid="uid://b8kucebbjieam" path="res://Scenes/Managers/beat_manager.gd" id="1_8sm3b"]
+
+[node name="BeatManager" type="Node"]
+script = ExtResource("1_8sm3b")

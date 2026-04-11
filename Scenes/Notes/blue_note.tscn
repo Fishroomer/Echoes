@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctglw6m2ihbak"]
+
+[ext_resource type="Script" uid="uid://o8ofqudytnlw" path="res://Scenes/Notes/note.gd" id="1_fmupq"]
+[ext_resource type="Texture2D" uid="uid://hwaaiuuc6bjq" path="res://Resource/Graphics/material_1.png" id="2_bx04k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fmupq"]
+size = Vector2(4, 4)
+
+[node name="Note" type="Node2D" groups=["Notes"]]
+script = ExtResource("1_fmupq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_bx04k")
+region_enabled = true
+region_rect = Rect2(16, 24, 8, 8)
+
+[node name="Area2D" type="Area2D" parent="." groups=["Notes"]]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_fmupq")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
