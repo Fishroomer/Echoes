@@ -4,7 +4,7 @@ extends Node2D
 @warning_ignore("narrowing_conversion")
 @onready var cell_position: Vector2i = Vector2i(position.x/8,position.y/8)
 
-@onready var interval_time:float = 60.0 / BeatManager.bpm
+@onready var interval_time:float = 60.0 / BeatManager.bpm / 2
 
 @export var note_number:int = 0
 @export var deault_direction:Vector2i = Vector2i.ZERO

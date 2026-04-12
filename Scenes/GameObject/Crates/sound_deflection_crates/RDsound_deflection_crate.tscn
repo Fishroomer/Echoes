@@ -5,7 +5,7 @@
 
 [node name="SoundDeflectionCrate" type="Node2D" groups=["GameObject", "crates"]]
 script = ExtResource("1_w41x2")
-sound_deflection = Vector4i(2, 3, 0, 1)
+sound_deflection = Vector4i(2, 0, 3, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_7pwaa")

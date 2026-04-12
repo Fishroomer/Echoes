@@ -34,6 +34,7 @@ signal note_absorb(note_number:int)
 signal change_room(room_number:int,camera_position:Vector2,new_player_spawn_position:Vector2i)
 
 func play_note(note_number:int):
+	print("记录声音"+str(note_number))
 	notes[note_number] = 1
 
 # 二进制数组 → 索引
@@ -45,10 +46,12 @@ func notes_to_index(arr: Array) -> int:
 
 func play_note_sfx() -> void:
 	var index = notes_to_index(notes)
-
+	if index == 0:
+		return
+	print("发出声音"+str(index))
 	# 自动映射音效（note_0 ~ note_31）
 	AudioManager.play_sfx("note_" + str(index))
-
+	
 	# 存入历史
 	notes_history.append(notes.duplicate())
 

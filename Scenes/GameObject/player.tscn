@@ -29,6 +29,7 @@ position = Vector2(2, 0)
 texture = ExtResource("1_v0iea")
 region_enabled = true
 region_rect = Rect2(29, 11, 2, 2)
+region_filter_clip_enabled = true
 
 [node name="Up" type="Sprite2D" parent="Node"]
 z_index = 2
@@ -36,6 +37,7 @@ position = Vector2(0, -2)
 texture = ExtResource("1_v0iea")
 region_enabled = true
 region_rect = Rect2(11, 9, 2, 2)
+region_filter_clip_enabled = true
 
 [node name="Left" type="Sprite2D" parent="Node"]
 z_index = 2
@@ -43,6 +45,7 @@ position = Vector2(-2, 0)
 texture = ExtResource("1_v0iea")
 region_enabled = true
 region_rect = Rect2(1, 11, 2, 2)
+region_filter_clip_enabled = true
 
 [node name="Down" type="Sprite2D" parent="Node"]
 z_index = 2
@@ -50,6 +53,7 @@ position = Vector2(0, 2)
 texture = ExtResource("1_v0iea")
 region_enabled = true
 region_rect = Rect2(19, 13, 2, 2)
+region_filter_clip_enabled = true
 
 [node name="Notes" type="Node" parent="."]
 

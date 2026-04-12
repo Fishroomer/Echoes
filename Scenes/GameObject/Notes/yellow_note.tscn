@@ -17,6 +17,7 @@ deault_direction = Vector2i(0, 1)
 texture = ExtResource("2_rj5i5")
 region_enabled = true
 region_rect = Rect2(24, 24, 8, 8)
+region_filter_clip_enabled = true
 
 [node name="Area2D" type="Area2D" parent="." groups=["Notes"]]
 collision_layer = 2
