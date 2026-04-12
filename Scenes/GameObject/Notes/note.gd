@@ -117,7 +117,7 @@ func sound_reflection() -> void:
 		tween.kill()
 	tween = create_tween()
 	tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
-	tween.tween_property(self,"position",(cell_to_world(cell_position)+cell_to_world(cell))/2,interval_time/2)
+	tween.tween_property(self,"position",(cell_to_world(cell_position)*2+cell_to_world(cell))/3,interval_time/2)
 	await tween.finished
 	direction = - direction
 	play_note()
