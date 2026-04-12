@@ -8,7 +8,7 @@ var timer: float = 0.0
 func _ready() -> void:
 	beat_interval = 60.0 / bpm
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	timer += delta
 	if timer >= beat_interval:
 		timer -= beat_interval
@@ -19,3 +19,4 @@ func _on_beat() -> void:
 	AudioManager.play_bgm() #播放节拍器音效
 	get_tree().call_group("Notes", "on_beat")
 	get_tree().call_group("Player", "on_beat")
+	get_tree().call_group("OnBeats", "on_beat")

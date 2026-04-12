@@ -8,7 +8,6 @@ var doors = [
 ] # 储存所有门的开关状态
 
 var doors_password = {
-	0: [[0,0,0,0,1],[0,0,0,1,1]]
 } # 储存所有门的密码
 
 var note_position = {
@@ -67,28 +66,26 @@ func try_open_door() -> void:
 	for door_id in doors_password.keys():
 		var password = doors_password[door_id]
 		var door = doors[door_id]
-
 		## 房间限制
-		#if door.room != current_room:
-			#continue
-
+		if door.room != current_room:
+			continue
 		var password_len = password.size()
-
 		if notes_history.size() < password_len:
 			continue
-
 		# 取最近输入
 		var recent = notes_history.slice(notes_history.size() - password_len, notes_history.size())
-
 		if recent == password:
 			if not door.is_open:
 				door.is_open = true
+				print("开！")
 				emit_signal("open_door", door_id)
 
 func _on_change_room(room_number, _camera_position: Vector2, new_player_spawn_position: Vector2i) -> void:
 	current_room = room_number
 	player_spawn_position = new_player_spawn_position
-
 	# （可选）跨房间清空输入
 	# notes_history.clear()
 	# notes = [0,0,0,0,0]
+
+func on_beat() -> void:
+	play_note_sfx()

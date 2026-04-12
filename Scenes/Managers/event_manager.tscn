@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://1o1swo02iybq" path="res://Scenes/Managers/event_manager.gd" id="1_wyfyb"]
 
-[node name="EventManager" type="Node"]
+[node name="EventManager" type="Node" groups=["OnBeats"]]
 script = ExtResource("1_wyfyb")
 
 [connection signal="change_room" from="." to="." method="_on_change_room"]

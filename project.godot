@@ -35,6 +35,7 @@ crates=""
 GameObject=""
 Notes=""
 Player=""
+OnBeats=""
 
 [input]
 

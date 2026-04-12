@@ -1,9 +1,10 @@
-[gd_resource type="TileSet" load_steps=14 format=3 uid="uid://ww2h7hf1ukoi"]
+[gd_resource type="TileSet" load_steps=15 format=3 uid="uid://ww2h7hf1ukoi"]
 
 [ext_resource type="Texture2D" uid="uid://hwaaiuuc6bjq" path="res://Resource/Graphics/material_1.png" id="1_d0af0"]
 [ext_resource type="PackedScene" uid="uid://bc1euhddiry3i" path="res://Scenes/GameObject/player.tscn" id="2_eljeb"]
 [ext_resource type="PackedScene" uid="uid://qi4cqaqp57ad" path="res://Scenes/GameObject/Crates/sound_absorb_crate.tscn" id="3_3qakx"]
 [ext_resource type="PackedScene" uid="uid://bf3mplhshfi23" path="res://Scenes/GameObject/Crates/sound_reflection_crate.tscn" id="4_pg3hw"]
+[ext_resource type="PackedScene" uid="uid://cfn5ru84nyind" path="res://Scenes/GameObject/door.tscn" id="5_eljeb"]
 [ext_resource type="Texture2D" uid="uid://4onvkeviog2v" path="res://Resource/Graphics/material_triangle_block.png" id="5_hjl20"]
 [ext_resource type="PackedScene" uid="uid://crglswslmd2xv" path="res://Scenes/GameObject/Crates/sound_deflection_crates/LDsound_deflection_crate.tscn" id="6_6rl81"]
 [ext_resource type="PackedScene" uid="uid://depwj4gp2i6ca" path="res://Scenes/GameObject/Crates/sound_deflection_crates/LUsound_deflection_crate.tscn" id="7_spmi8"]
@@ -229,6 +230,7 @@ texture_region_size = Vector2i(8, 8)
 scenes/1/scene = ExtResource("2_eljeb")
 scenes/2/scene = ExtResource("3_3qakx")
 scenes/3/scene = ExtResource("4_pg3hw")
+scenes/4/scene = ExtResource("5_eljeb")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1l0tm"]
 texture = ExtResource("5_hjl20")
