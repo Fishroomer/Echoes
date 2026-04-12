@@ -10,7 +10,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x3wgy"]
 size = Vector2(8, 8)
 
-[node name="Player" type="Node2D" groups=["GameObject", "Player"]]
+[node name="Player" type="Node2D" groups=["GameObject", "OnBeats", "Player"]]
 z_index = 3
 script = ExtResource("1_cvnsp")
 sound_absorb = true

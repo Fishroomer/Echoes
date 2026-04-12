@@ -12,8 +12,6 @@ func _ready() -> void:
 	timer.start(beat_interval)
 
 func _on_beat() -> void:
-	get_tree().call_group("Notes", "on_beat")
-	get_tree().call_group("Player", "on_beat")
 	get_tree().call_group("OnBeats", "on_beat")
 
 func _on_timer_timeout() -> void:
