@@ -17,6 +17,28 @@ var direction:Vector2i = Vector2i.ZERO
 
 var alive:bool = false #是否处于活跃状态
 
+#region 处理转向
+const DIR_UP = Vector2i(0, -1)
+const DIR_DOWN = Vector2i(0, 1)
+const DIR_LEFT = Vector2i(-1, 0)
+const DIR_RIGHT = Vector2i(1, 0)
+
+func dir_to_index(dir: Vector2i) -> int:
+	if dir == Vector2i(1, 0): return 0   # 右
+	if dir == Vector2i(0, -1): return 1  # 上
+	if dir == Vector2i(-1, 0): return 2  # 左
+	if dir == Vector2i(0, 1): return 3   # 下
+	return -1
+	
+func index_to_dir(i: int) -> Vector2i:
+	match i:
+		0: return Vector2i(1, 0)   # 右
+		1: return Vector2i(0, -1)  # 上
+		2: return Vector2i(-1, 0)  # 左
+		3: return Vector2i(0, 1)   # 下
+	return Vector2i.ZERO
+#endregion
+
 func on_beat() -> void:
 	if shooted:
 		self.visible = true
@@ -43,6 +65,7 @@ func try_move() -> void:
 			return
 		if target_game_object.sound_deflection:
 			sound_deflection(target_game_object.sound_deflection)
+			move_to(target_cell_position)
 			return
 	#判定终点在map上格子的性质（反射/吸收/折射）
 	if EventManager.current_map:
@@ -55,9 +78,8 @@ func try_move() -> void:
 			if data.get_custom_data("is_sound_reflection"):
 				sound_reflection()
 				return
-			if data.get_custom_data("is_sound_deflection"):
-				sound_deflection(data.get_custom_data("is_sound_deflection"))
-				return
+			if data.get_custom_data("sound_deflection"):
+				sound_deflection(data.get_custom_data("sound_deflection"))
 	move_to(target_cell_position)
 
 func move_to(cell: Vector2i):
@@ -105,12 +127,12 @@ func sound_reflection() -> void:
 	tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
 	tween.tween_property(self,"position",cell_to_world(cell_position),interval_time/2)
 
-func sound_deflection(two_directions:Vector4i) -> void:
-	var directions = [Vector2i(two_directions.x,two_directions.y),Vector2i(two_directions.z,two_directions.w)]
-	for i in directions:
-		if directions[i] != direction:
-			direction = directions[i]
-			break
+func sound_deflection(deflect_map: Vector4i) -> void: #折射
+	var i = dir_to_index(direction)
+	if i == -1:
+		return
+	var new_index = deflect_map[i]
+	direction = index_to_dir(new_index)
 	play_note()
 
 func _on_area_2d_area_entered(area: Area2D) -> void: #其他音符进入时，发出声音

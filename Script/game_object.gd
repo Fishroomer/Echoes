@@ -10,8 +10,9 @@ var tween:Tween
 @export var room_number:int = 0
 @export var spawn_position:Vector2 = Vector2.ZERO
 
-@onready var map: TileMapLayer = get_parent()
+@onready var map: TileMapLayer = EventManager.current_map
 @onready var cell_position: Vector2i = map.local_to_map(position)
+@onready var interval_time:float = 60.0 / BeatManager.bpm
 
 func try_reset():
 	if EventManager.current_room == room_number:
@@ -28,7 +29,7 @@ func move_to(cell: Vector2i):
 		tween.kill()
 	tween = create_tween()
 	tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
-	tween.tween_property(self,"position",map.map_to_local(cell),0.2)
+	tween.tween_property(self,"position",map.map_to_local(cell),interval_time)
 
 func is_wall(cell:Vector2i) -> bool:
 	var data := map.get_cell_tile_data(cell)

@@ -15,8 +15,22 @@ var magicnumber = [29,11,1,19] # 调整眼睛的贴图用的
 @onready var yellow_note: Node2D = $Notes/YellowNote
 @onready var note:Array[Note] = [blue_note,green_note,red_note,yellow_note]
 
+var direction:Vector2i
+
+var on_shoot_note := [false,false,false,false]
+var try_direction:Vector2i = Vector2i.ZERO
+
 func _ready() -> void:
 	EventManager.note_absorb.connect(on_note_absorb)
+
+func on_beat() -> void:
+	for i in range(4):
+		if on_shoot_note[i]:
+			shoot_note(i)
+	on_shoot_note = [false,false,false,false]
+	if try_direction != Vector2i.ZERO:
+		try_move(try_direction)
+		try_direction = Vector2i.ZERO
 
 func _process(_delta: float) -> void:
 	update_eyes()
@@ -25,28 +39,29 @@ func _process(_delta: float) -> void:
 		return
 	
 	if Input.is_action_pressed("RIGHT") and notes[0]:
-		print("发射！")
-		shoot_note(0)
+		on_shoot_note[0] = true
 	if Input.is_action_pressed("UP") and notes[1]:
-		shoot_note(1)
+		on_shoot_note[1] = true
 	if Input.is_action_pressed("LEFT") and notes[2]:
-		shoot_note(2)
+		on_shoot_note[2] = true
 	if Input.is_action_pressed("DOWN") and notes[3]:
-		shoot_note(3)
+		on_shoot_note[3] = true
 
-	var dir := Vector2i(
+	direction = Vector2i(
 		Input.get_vector("A","D","W","S").round()
 	)
-	if dir == Vector2i.ZERO:
+	if direction == Vector2i.ZERO:
 		return
-	if dir.x != 0:
-		dir.y = 0
-	
+	if direction.x != 0:
+		direction.y = 0
+	try_direction = direction
+
+
+func try_move(dir:Vector2i):
 	var dest := cell_position + dir
 	if is_wall(dest):
 		bump(dest)
 		return
-		
 	var crate := get_crate(dest)
 	if crate:
 		if not can_push_chain(dest, dir):
@@ -57,7 +72,6 @@ func _process(_delta: float) -> void:
 		for i in range(chain.size() - 1, -1, -1):
 			var c = chain[i]
 			c.move_to(c.cell_position + dir)
-
 	move_to(dest)
 
 func bump(cell: Vector2i):
@@ -65,8 +79,8 @@ func bump(cell: Vector2i):
 		tween.kill()
 	tween = create_tween()
 	tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
-	tween.tween_property(self,"position",(2*position+map.map_to_local(cell))/3,0.1)
-	tween.tween_property(self,"position",position,0.1)
+	tween.tween_property(self,"position",(2*position+map.map_to_local(cell))/3,interval_time/2)
+	tween.tween_property(self,"position",position,interval_time/2)
 
 func update_eyes():
 	for i in range(notes.size()):

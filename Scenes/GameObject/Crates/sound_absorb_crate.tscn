@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://qi4cqaqp57ad"]
 
-[ext_resource type="Script" uid="uid://b5vosmkj12608" path="res://Scenes/Crates/sound_absorb_crate.gd" id="1_be2qf"]
+[ext_resource type="Script" uid="uid://b5vosmkj12608" path="res://Scenes/GameObject/Crates/sound_absorb_crate.gd" id="1_be2qf"]
 [ext_resource type="Texture2D" uid="uid://hwaaiuuc6bjq" path="res://Resource/Graphics/material_1.png" id="2_535gw"]
 
 [node name="SoundAbsorbCrate" type="Node2D" groups=["GameObject", "crates"]]

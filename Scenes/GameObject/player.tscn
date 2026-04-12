@@ -1,16 +1,16 @@
 [gd_scene load_steps=8 format=3 uid="uid://bc1euhddiry3i"]
 
-[ext_resource type="Script" uid="uid://ccgxbkugumg2j" path="res://Scenes/player.gd" id="1_cvnsp"]
+[ext_resource type="Script" uid="uid://ccgxbkugumg2j" path="res://Scenes/GameObject/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://hwaaiuuc6bjq" path="res://Resource/Graphics/material_1.png" id="1_v0iea"]
-[ext_resource type="PackedScene" uid="uid://ctglw6m2ihbak" path="res://Scenes/Notes/blue_note.tscn" id="3_6t5aa"]
-[ext_resource type="PackedScene" uid="uid://j21hplsqgsqg" path="res://Scenes/Notes/green_note.tscn" id="4_x3wgy"]
-[ext_resource type="PackedScene" uid="uid://bynnen0jfb4kj" path="res://Scenes/Notes/red_note.tscn" id="5_3smsa"]
-[ext_resource type="PackedScene" uid="uid://4f0ojorreelf" path="res://Scenes/Notes/yellow_note.tscn" id="6_8erm5"]
+[ext_resource type="PackedScene" uid="uid://ctglw6m2ihbak" path="res://Scenes/GameObject/Notes/blue_note.tscn" id="3_6t5aa"]
+[ext_resource type="PackedScene" uid="uid://j21hplsqgsqg" path="res://Scenes/GameObject/Notes/green_note.tscn" id="4_x3wgy"]
+[ext_resource type="PackedScene" uid="uid://bynnen0jfb4kj" path="res://Scenes/GameObject/Notes/red_note.tscn" id="5_3smsa"]
+[ext_resource type="PackedScene" uid="uid://4f0ojorreelf" path="res://Scenes/GameObject/Notes/yellow_note.tscn" id="6_8erm5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x3wgy"]
 size = Vector2(8, 8)
 
-[node name="Player" type="Node2D" groups=["GameObject"]]
+[node name="Player" type="Node2D" groups=["GameObject", "Player"]]
 z_index = 3
 script = ExtResource("1_cvnsp")
 sound_absorb = true

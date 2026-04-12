@@ -18,3 +18,4 @@ func _on_beat() -> void:
 	#!!!处理玩家发射音符
 	AudioManager.play_bgm() #播放节拍器音效
 	get_tree().call_group("Notes", "on_beat")
+	get_tree().call_group("Player", "on_beat")
