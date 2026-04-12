@@ -37,21 +37,41 @@ func push_note(index: int):
 	if is_moving:
 		return
 	is_moving = true
+	# 先预处理
+	_prepare_next_note(index)
+	# 再移动
 	var tween = create_tween()
 	tween.tween_property(notes, "position:x", notes.position.x - SPACING, 0.2)
+
 	tween.finished.connect(func():
-		_recycle_and_update(index)
+		_recycle_only()
 		is_moving = false
 	)
+
+func _prepare_next_note(index: int):
+	var last = quene[-1]
+
+	if index == 0:
+		last.visible = false
+	else:
+		last.visible = true
+		last.play(str(index))
+
+func _recycle_only():
+	var first = quene.pop_front()
+	quene.append(first)
+	# 重置父节点位置
+	notes.position.x += SPACING
+	# 重排位置
+	for i in range(quene.size()):
+		quene[i].position.x = i * SPACING
 
 func _recycle_and_update(index: int):
 	# 取出最左
 	var first = quene.pop_front()
 	# 放到队尾
 	quene.append(first)
-	# 👉 重置父节点位置（关键！）
 	notes.position.x += SPACING
-	# 👉 更新所有节点的位置
 	for i in range(quene.size()):
 		quene[i].position.x = i * SPACING
 	# 👉 设置新内容（最右）
