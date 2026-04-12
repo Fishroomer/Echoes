@@ -9,6 +9,8 @@ extends Node2D
 @export var note_number:int = 0
 @export var deault_direction:Vector2i = Vector2i.ZERO
 
+var shooted:bool = false
+
 var tween:Tween
 
 var direction:Vector2i = Vector2i.ZERO
@@ -16,6 +18,11 @@ var direction:Vector2i = Vector2i.ZERO
 var alive:bool = false #是否处于活跃状态
 
 func on_beat() -> void:
+	if shooted:
+		self.visible = true
+		self.alive = true
+		self.direction = self.deault_direction
+		shooted = false
 	if not alive:
 		return
 	try_move()
@@ -122,7 +129,4 @@ func dead() -> void:
 	EventManager.note_absorb.emit(note_number)
 
 func shoot() -> void:
-	print("我被发射了！")
-	self.visible = true
-	self.alive = true
-	self.direction = self.deault_direction
+	shooted = true

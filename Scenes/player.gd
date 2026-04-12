@@ -1,9 +1,6 @@
 extends "res://Script/game_object.gd"
 
-var notes := [true,false,false,false]: #右，上，左，下
-	set(value):
-		notes = value
-		on_notes_changed()
+var notes := [true,false,false,false] #右，上，左，下
 
 @onready var right: Sprite2D = $Node/Right
 @onready var up: Sprite2D = $Node/Up
@@ -22,6 +19,8 @@ func _ready() -> void:
 	EventManager.note_absorb.connect(on_note_absorb)
 
 func _process(_delta: float) -> void:
+	update_eyes()
+	
 	if tween and tween.is_running():
 		return
 	
@@ -69,7 +68,7 @@ func bump(cell: Vector2i):
 	tween.tween_property(self,"position",(2*position+map.map_to_local(cell))/3,0.1)
 	tween.tween_property(self,"position",position,0.1)
 
-func on_notes_changed():
+func update_eyes():
 	for i in range(notes.size()):
 		var rect = eyes[i].region_rect
 		if notes[i]:

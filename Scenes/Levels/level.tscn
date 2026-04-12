@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5ribhf5lchot"]
+
+[ext_resource type="Script" uid="uid://bhvdsbt68mucb" path="res://Scenes/Levels/level.gd" id="1_f1n8c"]
+
+[node name="Level" type="Area2D"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_f1n8c")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
