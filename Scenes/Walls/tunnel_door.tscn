@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://by58nidrrjtsd"]
+
+[ext_resource type="Script" uid="uid://33a0x7ip28i7" path="res://Scenes/Walls/tunnel_door.gd" id="1_hg2ec"]
+[ext_resource type="Texture2D" uid="uid://hwaaiuuc6bjq" path="res://Resource/Graphics/material_1.png" id="2_0hvin"]
+
+[node name="TunnelDoor" type="Node2D" groups=["OnBeats", "OnButtonChange", "Wall"]]
+script = ExtResource("1_hg2ec")
+is_wall = true
+is_tunnel_door = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_0hvin")
+region_enabled = true
+region_rect = Rect2(0, 24, 8, 8)
+region_filter_clip_enabled = true

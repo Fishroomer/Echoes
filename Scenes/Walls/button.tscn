@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://p06t4oj6k6sb"]
+
+[ext_resource type="Script" uid="uid://crpne2rsccwqc" path="res://Scenes/Walls/button.gd" id="1_bsyvk"]
+[ext_resource type="Texture2D" uid="uid://hwaaiuuc6bjq" path="res://Resource/Graphics/material_1.png" id="1_eermv"]
+
+[node name="Button" type="Node2D" groups=["Buttons", "OnBeats", "Reset", "Wall"]]
+script = ExtResource("1_bsyvk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_eermv")
+region_enabled = true
+region_rect = Rect2(0, 16, 8, 8)
+region_filter_clip_enabled = true

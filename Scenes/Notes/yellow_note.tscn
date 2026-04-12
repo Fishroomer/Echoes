@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fmupq"]
 size = Vector2(4, 4)
 
-[node name="Note" type="Node2D" groups=["Notes"]]
+[node name="Note" type="Node2D" groups=["Notes", "OnBeats", "Reset"]]
 visible = false
 z_index = 1
 script = ExtResource("1_ik80s")

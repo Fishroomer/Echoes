@@ -67,6 +67,32 @@ func try_move() -> void:
 			sound_deflection(target_game_object.sound_deflection)
 			move_to(target_cell_position)
 			return
+	
+	#判定终点有无墙体（单向门/机关门/次序门）
+	var target_wall:Wall
+	for wall: Wall in get_tree().get_nodes_in_group("Wall"):
+		if wall.cell_position == target_cell_position:
+			target_wall = wall
+	if target_wall:
+		if target_wall.is_single_way_door:
+			var single_way_door:SingleWayDoor = target_wall
+			#如果是，则比对singlewaydoor的dir和dir，若相反则反射，其他情况无视
+			if single_way_door.direction + direction == Vector2i.ZERO: 
+				sound_reflection()
+				return
+		if target_wall.is_tunnel_door:
+			var tunnel_door:Tunnel_door = target_wall
+			# 若false（上下开），若dir.x != 0则反射，其他情况无视;若true（左右开），若dir.y != 0则反射，其他情况无视
+			if(not tunnel_door.direction and direction.x != 0) or (tunnel_door.direction and direction.y != 0):
+				sound_reflection()
+				return
+		if target_wall.sound_absorb:
+			sound_absorbed()
+			return
+		if target_wall.sound_reflection:
+			sound_reflection()
+			return
+	
 	#判定终点在map上格子的性质（反射/吸收/折射）
 	if EventManager.current_map:
 		var cell = EventManager.current_map.local_to_map(EventManager.current_map.to_local(cell_to_world(target_cell_position)))

@@ -25,6 +25,9 @@ var player_spawn_position:Vector2i = Vector2i(0,0)
 var notes_history := [] # 最近40次音符
 var notes := [0,0,0,0,0]  # 当前输入音符，右上左下，捣蛋，捣蛋会覆盖全部
 
+var button_state:bool = false
+var open_button_count:int = 0
+
 signal open_door(door_number:int)
 
 @warning_ignore("unused_signal")
@@ -100,4 +103,17 @@ func _on_change_room(room_number, _camera_position: Vector2, new_player_spawn_po
 	# notes = [0,0,0,0,0]
 
 func on_beat() -> void:
+	await get_tree().process_frame
 	play_note_sfx()
+	open_button_count = 0
+	for button:Wall_Button in get_tree().get_nodes_in_group("Buttons"):
+		if button.open:
+			open_button_count += 1
+	var new_button_state :bool = false
+	if open_button_count % 2 == 1:
+		new_button_state = true
+	else: 
+		new_button_state = false
+	if new_button_state != button_state:
+		get_tree().call_group("OnButtonChange", "on_button_change")
+		button_state = new_button_state

@@ -7,6 +7,7 @@
 script = ExtResource("1_ssocd")
 password = Array[Array]([[0]])
 is_wall = true
+sound_absorb = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_oc7ue")

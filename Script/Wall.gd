@@ -4,6 +4,8 @@ extends Node2D
 var tween:Tween
 
 @export var is_wall:bool = false
+@export var is_tunnel_door:bool = false
+@export var is_single_way_door:bool = false
 @export var sound_absorb:bool = false
 @export var sound_reflection:bool = false
 @export var sound_deflection:Vector4i = Vector4i(0,0,0,0)

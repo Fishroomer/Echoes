@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctlaacrrjyr8x"]
+
+[ext_resource type="Script" uid="uid://dx0gjukmjvuos" path="res://Scenes/Walls/single_way_door.gd" id="1_tux2d"]
+[ext_resource type="Texture2D" uid="uid://bp30dl8lwutg7" path="res://Resource/Graphics/material_arrow_block.png" id="2_ih5re"]
+
+[node name="SingleWayDoor" type="Node2D" groups=["Wall"]]
+script = ExtResource("1_tux2d")
+is_wall = true
+is_single_way_door = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ih5re")
+region_enabled = true
+region_rect = Rect2(0, 0, 8, 8)
+region_filter_clip_enabled = true

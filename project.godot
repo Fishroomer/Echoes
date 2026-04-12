@@ -38,6 +38,8 @@ Player=""
 OnBeats=""
 Reset="会在R键时执行复位函数"
 Wall=""
+Buttons="按钮"
+OnButtonChange="会根据按钮状态切换状态的节点"
 
 [input]
 

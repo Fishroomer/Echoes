@@ -62,6 +62,20 @@ func try_move(dir:Vector2i):
 	if is_wall(dest):
 		bump(dest)
 		return
+	#判断是否在管道内
+	for wall: Wall in get_tree().get_nodes_in_group("Wall"):
+		if wall.cell_position == cell_position:
+			if wall.is_tunnel_door:
+				var tunnel_door:Tunnel_door = wall
+				if tunnel_door.direction: #true为左右开，true则禁止上下移动
+					if dir.y != 0:
+						bump(dest)
+						return
+				else: #false为上下开，false则禁止左右移动
+					if dir.x != 0:
+						bump(dest)
+						return
+	#判断是否推箱子，是否可推
 	var crate := get_crate(dest)
 	if crate:
 		if not can_push_chain(dest, dir):
