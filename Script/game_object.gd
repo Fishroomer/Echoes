@@ -28,7 +28,7 @@ func move_to(cell: Vector2i):
 	if tween:
 		tween.kill()
 	tween = create_tween()
-	tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 	tween.tween_property(self,"position",map.map_to_local(cell),interval_time)
 
 func is_wall(cell:Vector2i) -> bool:
