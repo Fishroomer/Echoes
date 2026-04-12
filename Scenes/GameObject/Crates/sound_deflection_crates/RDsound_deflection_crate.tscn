@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dtmoajker5ww6" path="res://Scenes/GameObject/Crates/sound_deflection_crates/sound_deflection_crate.gd" id="1_w41x2"]
 [ext_resource type="Texture2D" uid="uid://4onvkeviog2v" path="res://Resource/Graphics/material_triangle_block.png" id="2_7pwaa"]
 
-[node name="SoundDeflectionCrate" type="Node2D" groups=["GameObject", "crates"]]
+[node name="SoundDeflectionCrate" type="Node2D" groups=["GameObject", "Reset", "crates"]]
 script = ExtResource("1_w41x2")
 sound_deflection = Vector4i(2, 0, 3, 1)
 

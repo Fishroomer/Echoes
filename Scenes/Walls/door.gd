@@ -1,14 +1,13 @@
-extends Node2D
+extends Wall
 
 @export var password:Array[Array] = []
-@export var room:int = 0
 @export var door_id:int = 0
 
 func _ready() -> void:
 	EventManager.doors_password[door_id] = password
 	EventManager.open_door.connect(on_open_door)
 	EventManager.doors.append(Dictionary({
-		"room": room,
+		"room": room_number,
 		"is_open": false
 	}))
 
@@ -19,3 +18,7 @@ func on_open_door(doorid:int) -> void:
 func open() -> void:
 	print("我open!")
 	self.visible = false
+	is_wall = false
+
+func reset():
+	pass

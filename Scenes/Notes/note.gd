@@ -152,3 +152,6 @@ func dead() -> void:
 
 func shoot() -> void:
 	shooted = true
+
+func reset() -> void:
+	dead()

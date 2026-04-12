@@ -1,11 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://cfn5ru84nyind"]
 
-[ext_resource type="Script" uid="uid://d3uyho6c8bpjl" path="res://Scenes/GameObject/door.gd" id="1_ssocd"]
+[ext_resource type="Script" uid="uid://d3uyho6c8bpjl" path="res://Scenes/Walls/door.gd" id="1_ssocd"]
 [ext_resource type="Texture2D" uid="uid://hwaaiuuc6bjq" path="res://Resource/Graphics/material_1.png" id="2_oc7ue"]
 
-[node name="Door" type="Node2D"]
+[node name="Door" type="Node2D" groups=["Wall"]]
 script = ExtResource("1_ssocd")
 password = Array[Array]([[0]])
+is_wall = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_oc7ue")

@@ -8,19 +8,25 @@ var tween:Tween
 @export var sound_deflection:Vector4i = Vector4i(0,0,0,0)
 
 @export var room_number:int = 0
-@export var spawn_position:Vector2 = Vector2.ZERO
+@export var spawn_cell_position:Vector2i = Vector2i.ZERO
 
-@onready var map: TileMapLayer = EventManager.current_map
-@onready var cell_position: Vector2i = map.local_to_map(position)
+var map: TileMapLayer
+@onready var cell_position: Vector2i
 @onready var interval_time:float = 60.0 / BeatManager.bpm
 
-func try_reset():
-	if EventManager.current_room == room_number:
-		reset()
+
+func set_map(m: TileMapLayer): #初始化地图函数，依赖注入
+	map = m
+	# 初始化位置
+	position = map.map_to_local(spawn_cell_position)
+	cell_position = spawn_cell_position
 
 func reset():
-	pass
-
+	if EventManager.current_room != room_number:
+		return
+	self.position = map.map_to_local(spawn_cell_position)
+	cell_position = spawn_cell_position
+	
 func move_to(cell: Vector2i):
 	cell_position = cell
 	#position = map.map_to_local(cell)
@@ -34,6 +40,10 @@ func move_to(cell: Vector2i):
 func is_wall(cell:Vector2i) -> bool:
 	var data := map.get_cell_tile_data(cell)
 	if not data:
+		for wall: Wall in get_tree().get_nodes_in_group("Wall"):
+			if wall.cell_position == cell:
+				#！！！如果是管道门这种复杂情况要添加逻辑
+				return wall.is_wall
 		return false
 	return data.get_custom_data("is_wall")
 
@@ -42,7 +52,7 @@ func get_crate(cell:Vector2i) -> GameObject:
 		if crate.cell_position == cell:
 			return crate
 	return null
-	
+
 func can_push_chain(cell: Vector2i, dir: Vector2i) -> bool:
 	if is_wall(cell):
 		return false

@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://4f0ojorreelf"]
+[gd_scene load_steps=4 format=3 uid="uid://bynnen0jfb4kj"]
 
-[ext_resource type="Script" uid="uid://o8ofqudytnlw" path="res://Scenes/GameObject/Notes/note.gd" id="1_ik80s"]
-[ext_resource type="Texture2D" uid="uid://hwaaiuuc6bjq" path="res://Resource/Graphics/material_1.png" id="2_rj5i5"]
+[ext_resource type="Script" uid="uid://o8ofqudytnlw" path="res://Scenes/Notes/note.gd" id="1_wbqkv"]
+[ext_resource type="Texture2D" uid="uid://hwaaiuuc6bjq" path="res://Resource/Graphics/material_1.png" id="2_qnfkd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fmupq"]
 size = Vector2(4, 4)
@@ -9,14 +9,14 @@ size = Vector2(4, 4)
 [node name="Note" type="Node2D" groups=["Notes"]]
 visible = false
 z_index = 1
-script = ExtResource("1_ik80s")
-note_number = 3
-deault_direction = Vector2i(0, 1)
+script = ExtResource("1_wbqkv")
+note_number = 2
+deault_direction = Vector2i(-1, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="." groups=["Notes", "OnBeats"]]
-texture = ExtResource("2_rj5i5")
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["Notes", "OnBeats", "Reset"]]
+texture = ExtResource("2_qnfkd")
 region_enabled = true
-region_rect = Rect2(24, 24, 8, 8)
+region_rect = Rect2(16, 16, 8, 8)
 region_filter_clip_enabled = true
 
 [node name="Area2D" type="Area2D" parent="." groups=["Notes"]]
