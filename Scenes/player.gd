@@ -1,6 +1,6 @@
 extends "res://Script/game_object.gd"
 
-var notes := [false,false,false,false]:
+var notes := [true,false,false,false]: #右，上，左，下
 	set(value):
 		notes = value
 		on_notes_changed()
@@ -10,7 +10,13 @@ var notes := [false,false,false,false]:
 @onready var left: Sprite2D = $Node/Left
 @onready var down: Sprite2D = $Node/Down
 @onready var eyes :Array[Sprite2D] = [right,up,left,down]
-var magicnumber = [29,11,1,19] #调整眼睛的贴图用的
+var magicnumber = [29,11,1,19] # 调整眼睛的贴图用的
+
+@onready var blue_note: Node2D = $Notes/BlueNote
+@onready var green_note: Node2D = $Notes/GreenNote
+@onready var red_note: Node2D = $Notes/RedNote
+@onready var yellow_note: Node2D = $Notes/YellowNote
+@onready var note:Array[Note] = [blue_note,green_note,red_note,yellow_note]
 
 func _ready() -> void:
 	EventManager.note_absorb.connect(on_note_absorb)
@@ -19,6 +25,16 @@ func _process(_delta: float) -> void:
 	if tween and tween.is_running():
 		return
 	
+	if Input.is_action_pressed("RIGHT") and notes[0]:
+		print("发射！")
+		shoot_note(0)
+	if Input.is_action_pressed("UP") and notes[1]:
+		shoot_note(1)
+	if Input.is_action_pressed("LEFT") and notes[2]:
+		shoot_note(2)
+	if Input.is_action_pressed("DOWN") and notes[3]:
+		shoot_note(3)
+
 	var dir := Vector2i(
 		Input.get_vector("A","D","W","S").round()
 	)
@@ -64,3 +80,9 @@ func on_notes_changed():
 
 func on_note_absorb(note_number:int) -> void:
 	notes[note_number] = true
+
+func shoot_note(note_number:int) -> void:
+	note[note_number].cell_position = cell_position
+	note[note_number].position = self.position
+	note[note_number].shoot()
+	notes[note_number] = false

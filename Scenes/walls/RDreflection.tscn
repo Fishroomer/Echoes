@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3stiy7f6xb4b"]
+
+[ext_resource type="Texture2D" uid="uid://4onvkeviog2v" path="res://Resource/Graphics/material_triangle_block.png" id="1_t5brj"]
+
+[node name="Reflection" type="Sprite2D"]
+texture = ExtResource("1_t5brj")
+region_enabled = true
+region_rect = Rect2(8, 8, 8, 8)

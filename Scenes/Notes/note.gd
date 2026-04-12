@@ -1,10 +1,13 @@
+class_name Note
 extends Node2D
 
 @warning_ignore("narrowing_conversion")
 @onready var cell_position: Vector2i = Vector2i(position.x/8,position.y/8)
 
 @onready var interval_time:float = 60.0 / BeatManager.bpm
+
 @export var note_number:int = 0
+@export var deault_direction:Vector2i = Vector2i.ZERO
 
 var tween:Tween
 
@@ -22,7 +25,7 @@ func try_move() -> void:
 	#判定终点有无物体（箱子/玩家）
 	var target_game_object:GameObject
 	for game_object: GameObject in get_tree().get_nodes_in_group("GameObject"):
-		if world_to_cell(game_object.position) == target_cell_position:
+		if game_object.cell_position == target_cell_position:
 			target_game_object = game_object
 	if target_game_object:
 		if target_game_object.sound_absorb:
@@ -45,56 +48,58 @@ func try_move() -> void:
 			if data.get_custom_data("is_sound_reflection"):
 				sound_reflection()
 				return
-			#!!! if data.get_custom_data("is_sound_deflection"):
+			if data.get_custom_data("is_sound_deflection"):
+				sound_deflection(data.get_custom_data("is_sound_deflection"))
+				return
 	move_to(target_cell_position)
 
-
 func move_to(cell: Vector2i):
+	print("目标" + str(cell))
 	cell_position = cell
+	
 	if tween:
 		tween.kill()
 	tween = create_tween()
-	tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
-	tween.tween_property(self,"position",cell_to_world(cell),interval_time)
+	tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
+	tween.tween_property(self, "position", cell_to_world(cell), interval_time)
 
 func cell_to_world(cell: Vector2i) -> Vector2:
-	return Vector2(cell.x*8,cell.y*8)
+	return Vector2(cell.x*8+4,cell.y*8+4 )
 	
 func world_to_cell(world_position: Vector2) -> Vector2i:
-	@warning_ignore("narrowing_conversion")
-	return Vector2i(world_position.x/8,world_position.y/8)
+	@warning_ignore("narrowing_conversion", "integer_division")
+	return Vector2i(world_position.x+4/8,world_position.y+4/8)
 
 func sound_absorbed() -> void:
+	print("被吸收")
 	var cell = cell_position + direction
 	if tween:
 		tween.kill()
 	tween = create_tween()
-	tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
-	tween.tween_property(self,"position",cell_to_world(cell),interval_time/2)
+	tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
+	tween.tween_property(self,"position",(cell_to_world(cell_position)+cell_to_world(cell))/2,interval_time/2)
 	await tween.finished
-	cell_position.x += 114 #魔法数字移到魔法位置嘻嘻嘻
-	visible = false
-	alive = false
-	EventManager.note_absorb.emit(note_number)
+	dead()
 
 func sound_reflection() -> void:
+	print("被反射")
 	var cell = cell_position + direction
 	if tween:
 		tween.kill()
 	tween = create_tween()
-	tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
-	tween.tween_property(self,"position",cell_to_world(cell),interval_time/2)
+	tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
+	tween.tween_property(self,"position",(cell_to_world(cell_position)+cell_to_world(cell))/2,interval_time/2)
 	await tween.finished
-	direction = -direction
+	direction = - direction
 	play_note()
-	cell = cell_position + direction
 	if tween:
 		tween.kill()
 	tween = create_tween()
 	tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
-	tween.tween_property(self,"position",cell_to_world(cell),interval_time/2)
-	
-func sound_deflection(directions:Array) -> void:
+	tween.tween_property(self,"position",cell_to_world(cell_position),interval_time/2)
+
+func sound_deflection(two_directions:Vector4i) -> void:
+	var directions = [Vector2i(two_directions.x,two_directions.y),Vector2i(two_directions.z,two_directions.w)]
 	for i in directions:
 		if directions[i] != direction:
 			direction = directions[i]
@@ -109,3 +114,15 @@ func _on_area_2d_area_entered(area: Area2D) -> void: #其他音符进入时，�
 
 func play_note() -> void:
 	EventManager.play_note(note_number)
+
+func dead() -> void:
+	cell_position.x += 114 #魔法数字移到魔法位置嘻嘻嘻
+	visible = false
+	alive = false
+	EventManager.note_absorb.emit(note_number)
+
+func shoot() -> void:
+	print("我被发射了！")
+	self.visible = true
+	self.alive = true
+	self.direction = self.deault_direction

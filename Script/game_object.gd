@@ -5,10 +5,20 @@ var tween:Tween
 
 @export var sound_absorb:bool = false
 @export var sound_reflection:bool = false
-@export var sound_deflection:Array[Vector2i] = []
+@export var sound_deflection:Vector4i = Vector4i(0,0,0,0)
+
+@export var room_number:int = 0
+@export var spawn_position:Vector2 = Vector2.ZERO
 
 @onready var map: TileMapLayer = get_parent()
 @onready var cell_position: Vector2i = map.local_to_map(position)
+
+func try_reset():
+	if EventManager.current_room == room_number:
+		reset()
+
+func reset():
+	pass
 
 func move_to(cell: Vector2i):
 	cell_position = cell
