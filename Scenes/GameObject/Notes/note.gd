@@ -83,7 +83,6 @@ func try_move() -> void:
 	move_to(target_cell_position)
 
 func move_to(cell: Vector2i):
-	print("目标" + str(cell))
 	cell_position = cell
 	
 	if tween:
@@ -135,10 +134,11 @@ func sound_deflection(deflect_map: Vector4i) -> void: #折射
 	direction = index_to_dir(new_index)
 	play_note()
 
-func _on_area_2d_area_entered(area: Area2D) -> void: #其他音符进入时，发出声音
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if not alive or not area.get_parent().alive:
+		return
 	if not area.is_in_group("Notes"):
 		return
-	#！！！变色
 	play_note()
 
 func play_note() -> void:
