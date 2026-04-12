@@ -1,0 +1,101 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbga3s3acjgm5"]
+
+[ext_resource type="Texture2D" uid="uid://brr78hygk2w63" path="res://Resource/Graphics/material_input.png" id="1_8fepm"]
+[ext_resource type="Script" uid="uid://bl1jaxaj4hyqj" path="res://Scenes/input_history.gd" id="1_n32ql"]
+[ext_resource type="SpriteFrames" uid="uid://uatfgmvfgf1" path="res://Resource/input_history.tres" id="2_iekts"]
+
+[node name="InputHistory" type="Node2D"]
+script = ExtResource("1_n32ql")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 10
+texture = ExtResource("1_8fepm")
+region_enabled = true
+region_rect = Rect2(0, 160, 320, 16)
+
+[node name="Notes" type="Node2D" parent="."]
+position = Vector2(-120, 0)
+
+[node name="1" type="AnimatedSprite2D" parent="Notes"]
+sprite_frames = ExtResource("2_iekts")
+animation = &"16"
+
+[node name="2" type="AnimatedSprite2D" parent="Notes"]
+position = Vector2(16, 0)
+sprite_frames = ExtResource("2_iekts")
+animation = &"1"
+
+[node name="3" type="AnimatedSprite2D" parent="Notes"]
+position = Vector2(32, 0)
+sprite_frames = ExtResource("2_iekts")
+animation = &"12"
+
+[node name="4" type="AnimatedSprite2D" parent="Notes"]
+position = Vector2(48, 0)
+sprite_frames = ExtResource("2_iekts")
+animation = &"1"
+
+[node name="5" type="AnimatedSprite2D" parent="Notes"]
+position = Vector2(64, 0)
+sprite_frames = ExtResource("2_iekts")
+animation = &"1"
+
+[node name="6" type="AnimatedSprite2D" parent="Notes"]
+position = Vector2(80, 0)
+sprite_frames = ExtResource("2_iekts")
+animation = &"13"
+
+[node name="7" type="AnimatedSprite2D" parent="Notes"]
+position = Vector2(96, 0)
+sprite_frames = ExtResource("2_iekts")
+animation = &"1"
+
+[node name="8" type="AnimatedSprite2D" parent="Notes"]
+position = Vector2(112, 0)
+sprite_frames = ExtResource("2_iekts")
+animation = &"1"
+
+[node name="9" type="AnimatedSprite2D" parent="Notes"]
+position = Vector2(128, 0)
+sprite_frames = ExtResource("2_iekts")
+animation = &"10"
+
+[node name="10" type="AnimatedSprite2D" parent="Notes"]
+position = Vector2(144, 0)
+sprite_frames = ExtResource("2_iekts")
+animation = &"1"
+
+[node name="11" type="AnimatedSprite2D" parent="Notes"]
+position = Vector2(160, 0)
+sprite_frames = ExtResource("2_iekts")
+animation = &"15"
+
+[node name="12" type="AnimatedSprite2D" parent="Notes"]
+position = Vector2(176, 0)
+sprite_frames = ExtResource("2_iekts")
+animation = &"1"
+
+[node name="13" type="AnimatedSprite2D" parent="Notes"]
+position = Vector2(192, 0)
+sprite_frames = ExtResource("2_iekts")
+animation = &"1"
+
+[node name="14" type="AnimatedSprite2D" parent="Notes"]
+position = Vector2(208, 0)
+sprite_frames = ExtResource("2_iekts")
+animation = &"16"
+
+[node name="15" type="AnimatedSprite2D" parent="Notes"]
+position = Vector2(224, 0)
+sprite_frames = ExtResource("2_iekts")
+animation = &"1"
+
+[node name="16" type="AnimatedSprite2D" parent="Notes"]
+position = Vector2(240, 0)
+sprite_frames = ExtResource("2_iekts")
+animation = &"1"
+
+[node name="17" type="AnimatedSprite2D" parent="Notes"]
+position = Vector2(256, 0)
+sprite_frames = ExtResource("2_iekts")
+animation = &"1"

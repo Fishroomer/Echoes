@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=4 uid="uid://bqiq2326d75q0"]
+[gd_scene load_steps=8 format=4 uid="uid://bqiq2326d75q0"]
 
 [ext_resource type="Script" uid="uid://bu3wompw7gc6t" path="res://Scenes/game.gd" id="1_wowpa"]
 [ext_resource type="TileSet" uid="uid://ww2h7hf1ukoi" path="res://Resource/game.tres" id="2_wowpa"]
+[ext_resource type="PackedScene" uid="uid://cbga3s3acjgm5" path="res://Scenes/input_history.tscn" id="6_i6g32"]
 [ext_resource type="PackedScene" uid="uid://c5ribhf5lchot" path="res://Scenes/Levels/level.tscn" id="7_1l0tm"]
 [ext_resource type="PackedScene" uid="uid://i6htyf2gy8qu" path="res://Scenes/camera.tscn" id="8_v158k"]
 [ext_resource type="Texture2D" uid="uid://bry41r4u7ukig" path="res://Resource/Graphics/material_outframe.png" id="9_h4fw4"]
@@ -35,7 +36,10 @@ shape = SubResource("RectangleShape2D_1l0tm")
 [node name="Camera" parent="." instance=ExtResource("8_v158k")]
 
 [node name="框" type="Sprite2D" parent="."]
-visible = false
 z_index = 10
 position = Vector2(160, 90)
 texture = ExtResource("9_h4fw4")
+
+[node name="InputHistory" parent="." instance=ExtResource("6_i6g32")]
+z_index = 10
+position = Vector2(160, 160)

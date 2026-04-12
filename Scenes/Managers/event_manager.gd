@@ -23,7 +23,7 @@ var current_map:TileMapLayer
 var player_spawn_position:Vector2i = Vector2i(0,0)
 
 var notes_history := [] # 最近40次音符
-var notes := [0,0,0,0,0]  # 当前输入音符
+var notes := [0,0,0,0,0]  # 当前输入音符，右上左下，捣蛋，捣蛋会覆盖全部
 
 signal open_door(door_number:int)
 
@@ -33,35 +33,44 @@ signal note_absorb(note_number:int)
 @warning_ignore("unused_signal")
 signal change_room(room_number:int,camera_position:Vector2,new_player_spawn_position:Vector2i)
 
+signal node_history_update(index:int)
+
 func play_note(note_number:int):
 	print("记录声音"+str(note_number))
 	notes[note_number] = 1
 
 # 二进制数组 → 索引
 func notes_to_index(arr: Array) -> int:
+	if arr[4] == 1:
+		return 16
 	var value = 0
-	for i in range(arr.size()):
-		value = value * 2 + arr[i]
+	for i in range(4):
+		value |= (arr[i] << i)
 	return value
 
 func play_note_sfx() -> void:
-	var index = notes_to_index(notes)
-	if index == 0:
-		return
-	print("发出声音"+str(index))
-	# 自动映射音效（note_0 ~ note_31）
-	AudioManager.play_sfx("note_" + str(index))
-	
-	# 存入历史
-	notes_history.append(notes.duplicate())
-
-	# 限制最多40条
-	if notes_history.size() > 40:
+	if notes[4] == 1:
+		print("发出捣蛋音")
+		AudioManager.play_sfx("捣蛋音")
+		# 存入历史（建议统一成特殊标记）
+		notes_history.append([0,0,0,0,1])
+	else:
+		var has_sound = false
+		for i in range(4):
+			if notes[i] == 1:
+				has_sound = true
+				print("发出声音", i)
+				AudioManager.play_sfx("note_" + str(i))
+		if not has_sound:
+			return
+		# 存入历史
+		notes_history.append(notes.duplicate())
+	# 限制最多17条
+	if notes_history.size() > 17:
 		notes_history.pop_front()
-
-	# 每次输入后尝试开门
+	node_history_update.emit(notes_to_index(notes))
+	# 尝试开门
 	try_open_door()
-
 	# 重置
 	notes = [0,0,0,0,0]
 
