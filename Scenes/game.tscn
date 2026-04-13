@@ -1,19 +1,30 @@
-[gd_scene load_steps=21 format=4 uid="uid://bqiq2326d75q0"]
+[gd_scene load_steps=32 format=4 uid="uid://bqiq2326d75q0"]
 
 [ext_resource type="Script" uid="uid://bu3wompw7gc6t" path="res://Scenes/game.gd" id="1_wowpa"]
 [ext_resource type="PackedScene" uid="uid://bcoxu28r1mb2r" path="res://Scenes/levelmap.tscn" id="2_h4fw4"]
 [ext_resource type="TileSet" uid="uid://ww2h7hf1ukoi" path="res://Resource/game.tres" id="2_wowpa"]
 [ext_resource type="PackedScene" uid="uid://bc1euhddiry3i" path="res://Scenes/GameObject/player.tscn" id="2_wrm1d"]
+[ext_resource type="PackedScene" uid="uid://qi4cqaqp57ad" path="res://Scenes/GameObject/Crates/sound_absorb_crate.tscn" id="3_3dryh"]
 [ext_resource type="Texture2D" uid="uid://bitrmkhy2gymu" path="res://Resource/Graphics/material_seperate_line.png" id="3_ewbju"]
 [ext_resource type="PackedScene" uid="uid://cfn5ru84nyind" path="res://Scenes/Walls/door.tscn" id="3_ldgsr"]
+[ext_resource type="PackedScene" uid="uid://by58nidrrjtsd" path="res://Scenes/Walls/tunnel_door.tscn" id="4_rku1e"]
+[ext_resource type="PackedScene" uid="uid://bf3mplhshfi23" path="res://Scenes/GameObject/Crates/sound_reflection_crate.tscn" id="4_wowpa"]
 [ext_resource type="PackedScene" uid="uid://p06t4oj6k6sb" path="res://Scenes/Walls/button.tscn" id="5_rfjv2"]
 [ext_resource type="PackedScene" uid="uid://b1empdqe71vac" path="res://Scenes/Toys/restart_point.tscn" id="5_rku1e"]
 [ext_resource type="PackedScene" uid="uid://cbga3s3acjgm5" path="res://Scenes/input_history.tscn" id="6_i6g32"]
 [ext_resource type="PackedScene" uid="uid://ddlym7y4clu3q" path="res://Scenes/Walls/ColorShooters/note_shooter.tscn" id="6_nnt18"]
 [ext_resource type="PackedScene" uid="uid://c5ribhf5lchot" path="res://Scenes/Levels/level.tscn" id="7_1l0tm"]
+[ext_resource type="PackedScene" uid="uid://dxt16hfdmi8t2" path="res://Scenes/Walls/ColorButtons/color_button.tscn" id="7_ewbju"]
+[ext_resource type="PackedScene" uid="uid://to6i4ek17uex" path="res://Scenes/GameObject/Crates/sound_deflection_crates/URsound_deflection_crate.tscn" id="7_iivbl"]
+[ext_resource type="PackedScene" uid="uid://ch1hojrdu7xvv" path="res://Scenes/GameObject/Crates/zqj.tscn" id="8_1phco"]
+[ext_resource type="PackedScene" uid="uid://crglswslmd2xv" path="res://Scenes/GameObject/Crates/sound_deflection_crates/LDsound_deflection_crate.tscn" id="8_7nbq1"]
+[ext_resource type="PackedScene" uid="uid://ctlaacrrjyr8x" path="res://Scenes/Walls/single_way_door.tscn" id="8_ewbju"]
 [ext_resource type="PackedScene" uid="uid://i6htyf2gy8qu" path="res://Scenes/camera.tscn" id="8_v158k"]
+[ext_resource type="PackedScene" uid="uid://gc66xpvhv644" path="res://Scenes/GameObject/Crates/sound_deflection_crates/RDsound_deflection_crate.tscn" id="9_exi56"]
 [ext_resource type="Texture2D" uid="uid://bry41r4u7ukig" path="res://Resource/Graphics/material_outframe.png" id="9_h4fw4"]
+[ext_resource type="PackedScene" uid="uid://depwj4gp2i6ca" path="res://Scenes/GameObject/Crates/sound_deflection_crates/LUsound_deflection_crate.tscn" id="10_7t8sx"]
 [ext_resource type="Texture2D" uid="uid://b6p8e7hrevpqf" path="res://Resource/Graphics/material_required_color.png" id="10_ldgsr"]
+[ext_resource type="PackedScene" uid="uid://drhj7qu8vxggm" path="res://Scenes/Walls/coin.tscn" id="16_mg4q0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o5yvi"]
 texture = ExtResource("10_ldgsr")
@@ -256,6 +267,95 @@ tile_set = SubResource("TileSet_iivbl")
 [node name="Walls" type="Node2D" parent="."]
 z_index = 2
 
+[node name="SoundAbsorbCrate" parent="Walls" instance=ExtResource("3_3dryh")]
+room_number = 2
+spawn_cell_position = Vector2i(12, 4)
+
+[node name="SoundAbsorbCrate2" parent="Walls" instance=ExtResource("3_3dryh")]
+room_number = 3
+spawn_cell_position = Vector2i(16, 9)
+
+[node name="SoundReflectionCrate" parent="Walls" instance=ExtResource("4_wowpa")]
+room_number = 5
+spawn_cell_position = Vector2i(37, 33)
+
+[node name="SoundReflectionCrate2" parent="Walls" instance=ExtResource("4_wowpa")]
+room_number = 5
+spawn_cell_position = Vector2i(40, 33)
+
+[node name="SoundReflectionCrate3" parent="Walls" instance=ExtResource("4_wowpa")]
+room_number = 5
+spawn_cell_position = Vector2i(38, 46)
+
+[node name="SoundReflectionCrate4" parent="Walls" instance=ExtResource("4_wowpa")]
+room_number = 5
+spawn_cell_position = Vector2i(41, 46)
+
+[node name="SoundDeflectionCrate" parent="Walls" instance=ExtResource("7_iivbl")]
+room_number = 5
+spawn_cell_position = Vector2i(38, 46)
+
+[node name="SoundDeflectionCrate2" parent="Walls" instance=ExtResource("8_7nbq1")]
+room_number = 5
+spawn_cell_position = Vector2i(39, 33)
+
+[node name="SoundDeflectionCrate3" parent="Walls" instance=ExtResource("9_exi56")]
+room_number = 5
+spawn_cell_position = Vector2i(39, 46)
+
+[node name="SoundDeflectionCrate4" parent="Walls" instance=ExtResource("10_7t8sx")]
+room_number = 5
+spawn_cell_position = Vector2i(40, 46)
+
+[node name="Zqj" parent="Walls" instance=ExtResource("8_1phco")]
+position = Vector2(84, 118)
+room_number = 4
+spawn_cell_position = Vector2i(10, 14)
+
+[node name="Zqj2" parent="Walls" instance=ExtResource("8_1phco")]
+position = Vector2(268, 260)
+beat_count = 7
+room_number = 5
+spawn_cell_position = Vector2i(33, 32)
+
+[node name="Zqj3" parent="Walls" instance=ExtResource("8_1phco")]
+position = Vector2(204, 340)
+beat_count = 2
+room_number = 5
+spawn_cell_position = Vector2i(25, 42)
+
+[node name="Zqj4" parent="Walls" instance=ExtResource("8_1phco")]
+position = Vector2(348, 316)
+beat_count = 6
+room_number = 5
+spawn_cell_position = Vector2i(43, 39)
+
+[node name="Zqj5" parent="Walls" instance=ExtResource("8_1phco")]
+position = Vector2(388, 436)
+beat_count = 1
+room_number = 6
+spawn_cell_position = Vector2i(48, 54)
+
+[node name="Zqj6" parent="Walls" instance=ExtResource("8_1phco")]
+position = Vector2(460, 388)
+room_number = 6
+spawn_cell_position = Vector2i(57, 48)
+
+[node name="Zqj7" parent="Walls" instance=ExtResource("8_1phco")]
+position = Vector2(484, 388)
+room_number = 6
+spawn_cell_position = Vector2i(60, 48)
+
+[node name="Zqj8" parent="Walls" instance=ExtResource("8_1phco")]
+position = Vector2(460, 404)
+room_number = 6
+spawn_cell_position = Vector2i(57, 50)
+
+[node name="Zqj9" parent="Walls" instance=ExtResource("8_1phco")]
+position = Vector2(484, 404)
+room_number = 6
+spawn_cell_position = Vector2i(60, 50)
+
 [node name="Door1" parent="Walls" instance=ExtResource("3_ldgsr")]
 position = Vector2(12, 76)
 door_id = 1
@@ -388,10 +488,124 @@ position = Vector2(252, 420)
 room_number = 5
 spawn_cell_position = Vector2i(30, 52)
 
+[node name="ColorButton" parent="Walls" instance=ExtResource("7_ewbju")]
+position = Vector2(284, 148)
+room_number = 5
+spawn_cell_position = Vector2i(35, 18)
+
 [node name="NoteShooter" parent="Walls" instance=ExtResource("6_nnt18")]
-position = Vector2(293, 148)
+position = Vector2(292, 148)
 room_number = 5
 spawn_cell_position = Vector2i(36, 18)
+
+[node name="Coin" parent="Walls" instance=ExtResource("16_mg4q0")]
+room_number = 3
+spawn_cell_position = Vector2i(21, 5)
+
+[node name="Coin2" parent="Walls" instance=ExtResource("16_mg4q0")]
+room_number = 6
+spawn_cell_position = Vector2i(47, 47)
+
+[node name="Coin3" parent="Walls" instance=ExtResource("16_mg4q0")]
+room_number = 4
+spawn_cell_position = Vector2i(10, 19)
+
+[node name="SingleWayDoor" parent="Walls" instance=ExtResource("8_ewbju")]
+position = Vector2(308, 292)
+direction = Vector2i(0, 1)
+room_number = 5
+spawn_cell_position = Vector2i(38, 36)
+
+[node name="SingleWayDoor2" parent="Walls" instance=ExtResource("8_ewbju")]
+position = Vector2(276, 364)
+rotation = 3.1415927
+direction = Vector2i(0, -1)
+room_number = 5
+spawn_cell_position = Vector2i(34, 45)
+
+[node name="TunnelDoor" parent="Walls" instance=ExtResource("4_rku1e")]
+room_number = 2
+spawn_cell_position = Vector2i(14, 3)
+
+[node name="TunnelDoor2" parent="Walls" instance=ExtResource("4_rku1e")]
+room_number = 3
+spawn_cell_position = Vector2i(16, 11)
+
+[node name="TunnelDoor3" parent="Walls" instance=ExtResource("4_rku1e")]
+default_direction = true
+room_number = 3
+spawn_cell_position = Vector2i(18, 6)
+
+[node name="TunnelDoor4" parent="Walls" instance=ExtResource("4_rku1e")]
+default_direction = true
+room_number = 3
+spawn_cell_position = Vector2i(21, 4)
+
+[node name="TunnelDoor5" parent="Walls" instance=ExtResource("4_rku1e")]
+room_number = 3
+spawn_cell_position = Vector2i(20, 5)
+
+[node name="TunnelDoor6" parent="Walls" instance=ExtResource("4_rku1e")]
+default_direction = true
+room_number = 3
+spawn_cell_position = Vector2i(21, 6)
+
+[node name="TunnelDoor7" parent="Walls" instance=ExtResource("4_rku1e")]
+room_number = 3
+spawn_cell_position = Vector2i(22, 5)
+
+[node name="TunnelDoor8" parent="Walls" instance=ExtResource("4_rku1e")]
+default_direction = true
+room_number = 5
+spawn_cell_position = Vector2i(27, 14)
+
+[node name="TunnelDoor9" parent="Walls" instance=ExtResource("4_rku1e")]
+default_direction = true
+room_number = 5
+spawn_cell_position = Vector2i(33, 11)
+
+[node name="TunnelDoor10" parent="Walls" instance=ExtResource("4_rku1e")]
+default_direction = true
+room_number = 5
+spawn_cell_position = Vector2i(38, 35)
+
+[node name="TunnelDoor11" parent="Walls" instance=ExtResource("4_rku1e")]
+default_direction = true
+room_number = 5
+spawn_cell_position = Vector2i(38, 35)
+
+[node name="TunnelDoor12" parent="Walls" instance=ExtResource("4_rku1e")]
+default_direction = true
+room_number = 5
+spawn_cell_position = Vector2i(38, 39)
+
+[node name="TunnelDoor13" parent="Walls" instance=ExtResource("4_rku1e")]
+room_number = 5
+spawn_cell_position = Vector2i(38, 43)
+
+[node name="TunnelDoor14" parent="Walls" instance=ExtResource("4_rku1e")]
+default_direction = true
+room_number = 5
+spawn_cell_position = Vector2i(45, 36)
+
+[node name="TunnelDoor15" parent="Walls" instance=ExtResource("4_rku1e")]
+room_number = 5
+spawn_cell_position = Vector2i(46, 32)
+
+[node name="TunnelDoor16" parent="Walls" instance=ExtResource("4_rku1e")]
+default_direction = true
+room_number = 5
+spawn_cell_position = Vector2i(32, 45)
+
+[node name="TunnelDoor17" parent="Walls" instance=ExtResource("4_rku1e")]
+room_number = 5
+spawn_cell_position = Vector2i(30, 52)
+
+[node name="SingleWayDoor3" parent="Walls" instance=ExtResource("8_ewbju")]
+position = Vector2(300, 212)
+direction = Vector2i(0, 1)
+room_number = 5
+spawn_cell_position = Vector2i(37, 26)
 
 [node name="Blocks" type="Node2D" parent="."]
 z_index = 2
@@ -428,7 +642,6 @@ position = Vector2(388, 148)
 room_id = 7
 
 [node name="Levels" type="Node2D" parent="."]
-visible = false
 
 [node name="Level1" parent="Levels" instance=ExtResource("7_1l0tm")]
 z_index = 5
@@ -469,7 +682,7 @@ polygon = PackedVector2Array(63, 96, 64, 135, 195, 137, 194, 128, 194, 113, 161,
 [node name="Level5" parent="Levels" instance=ExtResource("7_1l0tm")]
 z_index = 5
 room_number = 5
-camera_Position = Vector2(248, 120)
+camera_Position = Vector2(329, 153)
 player_respawn_position = Vector2(31, 15)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Levels/Level5"]
@@ -522,7 +735,6 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAAAAQAAAAAAAEAAAAAAAQAAAAAAAIAAAAAAAQ
 tile_set = ExtResource("2_wowpa")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="框" type="Sprite2D" parent="CanvasLayer"]
 z_index = 10

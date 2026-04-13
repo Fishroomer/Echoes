@@ -219,4 +219,5 @@ func reset() -> void:
 		cell_position.x += 114 #魔法数字移到魔法位置嘻嘻嘻
 		visible = false
 		alive = false
+		return
 	dead()

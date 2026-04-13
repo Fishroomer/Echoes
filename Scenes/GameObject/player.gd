@@ -49,6 +49,7 @@ func on_beat() -> void:
 		try_move(input_buffer)
 		input_buffer = Vector2i.ZERO
 		has_moved_this_beat = true # 标记本拍已执行过缓冲移动
+		
 func _process(_delta: float) -> void:
 	# 1. 基础处理（更新表现、重置等）
 	update_eyes()
