@@ -5,6 +5,7 @@ var open:bool = false
 func on_beat() -> void:
 	if get_gameobject() and not open:
 		open = true 
+		AudioManager.play_sfx("Coin")
 		EventManager.coin_collectied.emit()
 		self.visible = false 
 		self.remove_from_group("OnBeats")

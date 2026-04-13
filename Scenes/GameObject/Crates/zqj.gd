@@ -6,7 +6,7 @@ extends "res://Script/game_object.gd"
 var active:bool = false
 
 @export var beat_count:int = 4
-var count_beat:int = 0
+var count_beat:int = 3
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:

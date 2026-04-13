@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cdjhy5kr7db1f"]
+[gd_scene load_steps=3 format=3 uid="uid://cdjhy5kr7db1f"]
 
 [ext_resource type="Texture2D" uid="uid://h0khlwd0bjrn" path="res://Resource/Graphics/thanks.png" id="1_kgb6p"]
+[ext_resource type="Script" uid="uid://cofdj86037bi1" path="res://Scenes/thanks.gd" id="1_ufe2t"]
 
 [node name="Thanks" type="Node2D"]
+script = ExtResource("1_ufe2t")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(160, 90)

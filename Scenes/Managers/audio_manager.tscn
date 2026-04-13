@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://13nstyol5l1v"]
+[gd_scene load_steps=12 format=3 uid="uid://13nstyol5l1v"]
 
 [ext_resource type="Script" uid="uid://vd3fmq11ak0j" path="res://Scenes/Managers/audio_manager.gd" id="1_x8tha"]
 [ext_resource type="AudioStream" uid="uid://cfqwktmx0g7kq" path="res://Resource/Audio/SFX/1.mp3" id="2_kd5to"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://bgpvvja72qi6v" path="res://Resource/Audio/SFX/捣蛋.mp3" id="6_bf05v"]
 [ext_resource type="AudioStream" uid="uid://dy1tvlg1j62j6" path="res://Resource/Audio/SFX/门.mp3" id="7_uwgts"]
 [ext_resource type="AudioStream" uid="uid://d3jhwfdn3vru1" path="res://Resource/Audio/SFX/重开-短(2).mp3" id="9_4savl"]
+[ext_resource type="AudioStream" uid="uid://byrkam0am007t" path="res://Resource/Audio/SFX/Super_Mario_World_Coin.mp3" id="9_pewo8"]
 
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_x8tha")
@@ -36,6 +37,9 @@ stream = ExtResource("6_4savl")
 
 [node name="门" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("7_uwgts")
+
+[node name="Coin" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("9_pewo8")
 
 [node name="重开" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("9_4savl")
