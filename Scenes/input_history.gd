@@ -21,6 +21,8 @@ extends Node2D
 @onready var _17: AnimatedSprite2D = $"Notes/17"
 
 @onready var jzy: Sprite2D = $JZY
+@export var beat_count:int = 4
+var count_beat:int = 0
 
 @onready var quene :Array[AnimatedSprite2D]= [_1,_2,_3,_4,_5,_6,_7,_8,_9,_10,_11,_12,_13,_14,_15,_16,_17]
 
@@ -85,8 +87,11 @@ func _recycle_and_update(index: int):
 		last.play(str(index)) # 动画名 = index
 
 func on_beat() -> void:
-	# 先瞬间变亮
-	jzy.modulate.a = 1.0
-	# 创建 Tween
-	var tween = create_tween()
-	tween.tween_property(jzy, "modulate:a", 0.0, 0.1)
+	count_beat += 1
+	if count_beat >= beat_count:
+		count_beat = 0
+		# 先瞬间变亮
+		jzy.modulate.a = 1.0
+		# 创建 Tween
+		var tween = create_tween()
+		tween.tween_property(jzy, "modulate:a", 0.0, 0.1)
