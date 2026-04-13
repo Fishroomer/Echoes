@@ -4,7 +4,7 @@
 
 [node name="BeatManager" type="Node"]
 script = ExtResource("1_8sm3b")
-bpm = 400.0
+bpm = 200.0
 
 [node name="Timer" type="Timer" parent="."]
 

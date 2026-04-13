@@ -39,7 +39,6 @@ func on_beat() -> void:
 		if dir.x != 0:
 			dir.y = 0
 		try_move(dir)
-		input_buffer = Vector2i.ZERO
 		return
 
 	if input_buffer != Vector2i.ZERO:
@@ -48,9 +47,6 @@ func on_beat() -> void:
 
 func _process(_delta: float) -> void:
 	update_eyes()
-	
-	if tween and tween.is_running():
-		return
 	
 	if Input.is_action_pressed("R"):
 		get_tree().call_group("Reset", "reset")
