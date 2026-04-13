@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://bqiq2326d75q0"]
+[gd_scene load_steps=36 format=4 uid="uid://bqiq2326d75q0"]
 
 [ext_resource type="Script" uid="uid://bu3wompw7gc6t" path="res://Scenes/game.gd" id="1_wowpa"]
 [ext_resource type="PackedScene" uid="uid://bcoxu28r1mb2r" path="res://Scenes/levelmap.tscn" id="2_h4fw4"]
@@ -25,6 +25,8 @@
 [ext_resource type="PackedScene" uid="uid://depwj4gp2i6ca" path="res://Scenes/GameObject/Crates/sound_deflection_crates/LUsound_deflection_crate.tscn" id="10_7t8sx"]
 [ext_resource type="Texture2D" uid="uid://b6p8e7hrevpqf" path="res://Resource/Graphics/material_required_color.png" id="10_ldgsr"]
 [ext_resource type="PackedScene" uid="uid://drhj7qu8vxggm" path="res://Scenes/Walls/coin.tscn" id="16_mg4q0"]
+[ext_resource type="Texture2D" uid="uid://c3r7ek4qcipj2" path="res://Resource/Graphics/matrial_tipline.png" id="26_fkdbe"]
+[ext_resource type="Texture2D" uid="uid://dhc8mkx3elgxg" path="res://Resource/Graphics/tips.png" id="27_81klo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o5yvi"]
 texture = ExtResource("10_ldgsr")
@@ -242,6 +244,47 @@ texture_region_size = Vector2i(8, 8)
 [sub_resource type="TileSet" id="TileSet_iivbl"]
 tile_size = Vector2i(8, 8)
 sources/1 = SubResource("TileSetAtlasSource_ewbju")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_81klo"]
+texture = ExtResource("26_fkdbe")
+texture_region_size = Vector2i(8, 8)
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+0:0/0/terrains_peering_bit/right_side = 0
+0:0/0/terrains_peering_bit/bottom_side = 0
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 0
+1:0/0/terrains_peering_bit/bottom_side = 0
+1:0/0/terrains_peering_bit/left_side = 0
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/terrain = 0
+2:0/0/terrains_peering_bit/right_side = 0
+2:0/0/terrains_peering_bit/left_side = 0
+0:1/0 = 0
+0:1/0/terrain_set = 0
+0:1/0/terrain = 0
+0:1/0/terrains_peering_bit/right_side = 0
+0:1/0/terrains_peering_bit/top_side = 0
+1:1/0 = 0
+1:1/0/terrain_set = 0
+1:1/0/terrain = 0
+1:1/0/terrains_peering_bit/left_side = 0
+1:1/0/terrains_peering_bit/top_side = 0
+2:1/0 = 0
+2:1/0/terrain_set = 0
+2:1/0/terrain = 0
+2:1/0/terrains_peering_bit/bottom_side = 0
+2:1/0/terrains_peering_bit/top_side = 0
+
+[sub_resource type="TileSet" id="TileSet_tgy6u"]
+tile_size = Vector2i(8, 8)
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+sources/0 = SubResource("TileSetAtlasSource_81klo")
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_wowpa")
@@ -748,3 +791,29 @@ texture = ExtResource("9_h4fw4")
 [node name="InputHistory" parent="CanvasLayer" instance=ExtResource("6_i6g32")]
 z_index = 11
 position = Vector2(160, 160)
+
+[node name="tips_line" type="TileMapLayer" parent="."]
+z_index = 5
+tile_map_data = PackedByteArray("AAAbABIAAAABAAEAAAAbABEAAAACAAEAAAAUAA0AAAACAAEAAAAUAAwAAAACAAEAAAAUAAsAAAACAAEAAAAUAAoAAAAAAAAAAAAVAAoAAAACAAAAAAABAAUAAAACAAEAAAABAAYAAAACAAEAAAABAAcAAAACAAEAAAABAAgAAAACAAEAAAALABEAAAABAAAAAAALABIAAAAAAAEAAAAMABIAAAABAAAAAAAuABkAAAACAAEAAAAaABgAAAAAAAEAAAAaABcAAAABAAAAAAAbABgAAAABAAAAAAAbABkAAAAAAAEAAAAcABkAAAACAAAAAAAdABkAAAACAAAAAAAeABkAAAACAAAAAAAjACQAAAACAAEAAAAjACUAAAACAAEAAAAjACYAAAABAAEAAAAiACYAAAACAAAAAAAhACYAAAACAAAAAAAgACYAAAACAAAAAAAfACYAAAACAAAAAAAeACYAAAACAAAAAAAdACYAAAAAAAEAAAAdACUAAAACAAEAAAAdACQAAAABAAAAAAAZAC4AAAAAAAAAAAAaAC4AAAACAAAAAAAbAC4AAAACAAAAAAAcAC4AAAABAAEAAAAcAC0AAAAAAAAAAABAADEAAAAAAAEAAABBADEAAAABAAAAAAAuADIAAAAAAAAAAAAtADMAAAAAAAAAAAAuADMAAAABAAEAAAA0AC0AAAACAAAAAAA1AC0AAAABAAAAAAA1AC4AAAACAAEAAAAvACcAAAACAAAAAAAuACcAAAAAAAAAAAAuACgAAAACAAEAAAAuACkAAAACAAEAAAAuACoAAAABAAEAAAA=")
+tile_set = SubResource("TileSet_tgy6u")
+
+[node name="teach" type="Sprite2D" parent="."]
+z_index = 50
+
+[node name="wasd" type="Sprite2D" parent="teach"]
+position = Vector2(-12, 77)
+texture = ExtResource("27_81klo")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="r" type="Sprite2D" parent="teach"]
+position = Vector2(96, -1)
+texture = ExtResource("27_81klo")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 32)
+
+[node name="right" type="Sprite2D" parent="teach"]
+position = Vector2(235, 341)
+texture = ExtResource("27_81klo")
+region_enabled = true
+region_rect = Rect2(64, 0, 32, 32)
