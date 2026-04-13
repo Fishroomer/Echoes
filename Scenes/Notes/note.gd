@@ -127,7 +127,6 @@ func world_to_cell(world_position: Vector2) -> Vector2i:
 	return Vector2i(world_position.x+4/8,world_position.y+4/8)
 
 func sound_absorbed() -> void:
-	print("被吸收")
 	var cell = cell_position + direction
 	if tween:
 		tween.kill()
@@ -163,16 +162,15 @@ func sound_deflection(deflect_map: Vector4i) -> void: #折射
 	play_note()
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	if not alive or not area.get_parent().alive:
+	if not alive:
 		return
-	if not area.is_in_group("Notes"):
-		return
-	play_note()
+	dead()
 
 func play_note() -> void:
 	EventManager.play_note(note_number)
 
 func dead() -> void:
+	print("被吸收")
 	#第一次回收则不再野生
 	if wild:
 		wild = false

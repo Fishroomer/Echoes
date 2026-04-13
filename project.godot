@@ -14,6 +14,8 @@ config/name="五音补全"
 run/main_scene="uid://bqiq2326d75q0"
 config/features=PackedStringArray("4.5", "Forward Plus")
 boot_splash/show_image=false
+config/icon="uid://p4wv01fhqaft"
+config/windows_native_icon="res://Resource/Graphics/icon.ico"
 config/stretch/mode="canvas_items"
 
 [autoload]
@@ -99,6 +101,7 @@ ESC={
 
 2d_physics/layer_2="音符"
 2d_physics/layer_3="player"
+2d_physics/layer_4="Zqj"
 
 [rendering]
 

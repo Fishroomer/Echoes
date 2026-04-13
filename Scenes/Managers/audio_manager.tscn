@@ -18,6 +18,8 @@ script = ExtResource("1_x8tha")
 
 [node name="捣蛋音" type="AudioStreamPlayer2D" parent="SFX"]
 
+[node name="玩家移动" type="AudioStreamPlayer2D" parent="SFX"]
+
 [node name="BGMPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_kpiw8")
 volume_db = -10.0

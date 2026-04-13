@@ -72,6 +72,7 @@ func _process(_delta: float) -> void:
 
 func try_move(dir:Vector2i):
 	var dest := cell_position + dir
+	AudioManager.play_sfx("玩家移动")
 	if is_wall(dest):
 		bump(dest)
 		return

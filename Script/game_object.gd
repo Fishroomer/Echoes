@@ -35,7 +35,7 @@ func move_to(cell: Vector2i):
 		tween.kill()
 	tween = create_tween()
 	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
-	tween.tween_property(self,"position",map.map_to_local(cell),interval_time)
+	tween.tween_property(self,"position",map.map_to_local(cell),interval_time/2)
 
 func is_wall(cell:Vector2i) -> bool:
 	var data := map.get_cell_tile_data(cell)

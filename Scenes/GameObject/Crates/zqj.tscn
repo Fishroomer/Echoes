@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ch1hojrdu7xvv"]
+[gd_scene load_steps=10 format=3 uid="uid://ch1hojrdu7xvv"]
 
 [ext_resource type="Script" uid="uid://cll0ptam1u5bn" path="res://Scenes/GameObject/Crates/zqj.gd" id="1_e7q3q"]
 [ext_resource type="Texture2D" uid="uid://bmaltcb2ct1n" path="res://Resource/Graphics/material_zhangqijun.png" id="2_ut5ip"]
@@ -57,14 +57,27 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Zqj" type="Node2D" groups=["GameObject", "Reset", "crates"]]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ut5ip"]
+size = Vector2(36, 36)
+
+[node name="Zqj" type="Node2D" groups=["GameObject", "OnBeats", "Reset", "crates"]]
 script = ExtResource("1_e7q3q")
 sound_reflection = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="face" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_wp3lf")
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+[node name="emoji" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0k3j3")
-animation = &"awake"
+animation = &"sleep"
 autoplay = "sleep"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_ut5ip")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

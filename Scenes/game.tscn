@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://bqiq2326d75q0"]
+[gd_scene load_steps=16 format=4 uid="uid://bqiq2326d75q0"]
 
 [ext_resource type="Script" uid="uid://bu3wompw7gc6t" path="res://Scenes/game.gd" id="1_wowpa"]
 [ext_resource type="PackedScene" uid="uid://bcoxu28r1mb2r" path="res://Scenes/levelmap.tscn" id="2_h4fw4"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://p06t4oj6k6sb" path="res://Scenes/Walls/button.tscn" id="5_rfjv2"]
 [ext_resource type="PackedScene" uid="uid://cbga3s3acjgm5" path="res://Scenes/input_history.tscn" id="6_i6g32"]
 [ext_resource type="PackedScene" uid="uid://c5ribhf5lchot" path="res://Scenes/Levels/level.tscn" id="7_1l0tm"]
+[ext_resource type="PackedScene" uid="uid://ch1hojrdu7xvv" path="res://Scenes/GameObject/Crates/zqj.tscn" id="8_1phco"]
 [ext_resource type="PackedScene" uid="uid://i6htyf2gy8qu" path="res://Scenes/camera.tscn" id="8_v158k"]
 [ext_resource type="Texture2D" uid="uid://bry41r4u7ukig" path="res://Resource/Graphics/material_outframe.png" id="9_h4fw4"]
 
@@ -44,6 +45,9 @@ spawn_cell_position = Vector2i(18, 11)
 
 [node name="SoundAbsorbCrate2" parent="Blocks" instance=ExtResource("4_wowpa")]
 spawn_cell_position = Vector2i(18, 12)
+
+[node name="Zqj" parent="Blocks" instance=ExtResource("8_1phco")]
+spawn_cell_position = Vector2i(24, 12)
 
 [node name="Toys" type="Node2D" parent="."]
 
