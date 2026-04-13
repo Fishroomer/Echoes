@@ -19,6 +19,8 @@ var direction:Vector2i
 
 var on_shoot_note := [false,false,false,false]
 var try_direction:Vector2i = Vector2i.ZERO
+
+var has_moved_this_beat: bool = false
 var input_buffer: Vector2i = Vector2i.ZERO
 
 func _ready() -> void:
@@ -32,28 +34,24 @@ func set_map(m: TileMapLayer): #初始化地图函数，依赖注入
 	EventManager.notes_to_shoot = note
 
 func on_beat() -> void:
+	# 每一拍开始时，重置“本拍已动”开关
+	has_moved_this_beat = false
+	
+	# 处理射击逻辑（保持你原有的逻辑）
 	for i in range(4):
 		if on_shoot_note[i]:
 			shoot_note(i)
-	on_shoot_note = [false,false,false,false]
+	on_shoot_note = [false, false, false, false]
 
-	var dir = Vector2i(
-		Input.get_vector("A","D","W","S").round()
-	)
-	
-	if dir != Vector2i.ZERO:
-		if dir.x != 0:
-			dir.y = 0
-		try_move(dir)
-		return
-
+	# 处理缓冲区移动
+	# 如果缓冲区有按键，说明是上一拍后90%时间里按下的
 	if input_buffer != Vector2i.ZERO:
 		try_move(input_buffer)
 		input_buffer = Vector2i.ZERO
-
+		has_moved_this_beat = true # 标记本拍已执行过缓冲移动
 func _process(_delta: float) -> void:
+	# 1. 基础处理（更新表现、重置等）
 	update_eyes()
-	
 	if Input.is_action_pressed("R"):
 		get_tree().call_group("Reset", "reset")
 		return
@@ -67,14 +65,24 @@ func _process(_delta: float) -> void:
 	if Input.is_action_pressed("DOWN") and notes[3]:
 		on_shoot_note[3] = true
 
-	var dir = Vector2i(
-		Input.get_vector("A","D","W","S").round()
-	)
-
-	if dir != Vector2i.ZERO:
-		if dir.x != 0:
-			dir.y = 0
-		input_buffer = dir
+	# --- 1. 获取输入 (关键：使用 is_action_just_pressed) ---
+	var input_dir = Vector2i.ZERO
+	if Input.is_action_just_pressed("W"): input_dir = Vector2i.UP
+	elif Input.is_action_just_pressed("S"): input_dir = Vector2i.DOWN
+	elif Input.is_action_just_pressed("A"): input_dir = Vector2i.LEFT
+	elif Input.is_action_just_pressed("D"): input_dir = Vector2i.RIGHT
+	# --- 2. 分窗处理 ---
+	if input_dir != Vector2i.ZERO:
+		var t = BeatManager.beat_progress
+		if t < 0.1:
+			# 窗口 A: 拍后瞬间。如果本拍还没动，立刻动
+			if not has_moved_this_beat:
+				try_move(input_dir)
+				has_moved_this_beat = true
+				input_buffer = Vector2i.ZERO # 消费掉，防止后续 buffer 执行
+		else:
+			# 窗口 B: 拍中或拍前。存入缓冲，等待下个 on_beat
+			input_buffer = input_dir
 
 func try_move(dir:Vector2i):
 	var dest := cell_position + dir
