@@ -23,14 +23,21 @@ var try_direction:Vector2i = Vector2i.ZERO
 func _ready() -> void:
 	EventManager.note_absorb.connect(on_note_absorb)
 
+
 func on_beat() -> void:
 	for i in range(4):
 		if on_shoot_note[i]:
 			shoot_note(i)
 	on_shoot_note = [false,false,false,false]
-	if try_direction != Vector2i.ZERO:
-		try_move(try_direction)
-		try_direction = Vector2i.ZERO
+
+	var dir = Vector2i(
+		Input.get_vector("A","D","W","S").round()
+	)
+
+	if dir != Vector2i.ZERO:
+		if dir.x != 0:
+			dir.y = 0
+		try_move(dir)
 
 func _process(_delta: float) -> void:
 	update_eyes()
@@ -51,14 +58,14 @@ func _process(_delta: float) -> void:
 	if Input.is_action_pressed("DOWN") and notes[3]:
 		on_shoot_note[3] = true
 
-	direction = Vector2i(
-		Input.get_vector("A","D","W","S").round()
-	)
-	if direction == Vector2i.ZERO:
-		return
-	if direction.x != 0:
-		direction.y = 0
-	try_direction = direction
+	#direction = Vector2i(
+		#Input.get_vector("A","D","W","S").round()
+	#)
+	#if direction == Vector2i.ZERO:
+		#return
+	#if direction.x != 0:
+		#direction.y = 0
+	#try_direction = direction
 
 
 func try_move(dir:Vector2i):
