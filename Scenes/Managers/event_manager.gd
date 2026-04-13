@@ -110,9 +110,9 @@ func try_open_door() -> void:
 func _on_change_room(room_number, _camera_position: Vector2, new_player_spawn_position: Vector2i) -> void:
 	current_room = room_number
 	player_spawn_cell_position = new_player_spawn_position
-	# （可选）跨房间清空输入
-	# notes_history.clear()
-	# notes = [0,0,0,0,0]
+	 #（可选）跨房间清空输入
+	notes_history.clear()
+	notes = [0,0,0,0,0]
 
 func on_beat() -> void:
 	await get_tree().process_frame

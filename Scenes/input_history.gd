@@ -32,10 +32,23 @@ const MAX_VISIBLE := 16
 var is_moving := false
 
 func _ready():
+	EventManager.change_room.connect(on_change_room)
 	EventManager.node_history_update.connect(push_note)
 	for i in range(quene.size()):
 		quene[i].position.x = i * SPACING
 
+func on_change_room(_a,_b,_c):
+	is_moving = false
+	# 2️⃣ 重置队列顺序（回到初始顺序）
+	quene = [_1,_2,_3,_4,_5,_6,_7,_8,_9,_10,_11,_12,_13,_14,_15,_16,_17]
+	# 3️⃣ 重置位置
+	notes.position.x = -120
+	for i in range(quene.size()):
+		quene[i].position.x = i * SPACING
+	# 4️⃣ 清空显示（隐藏或设为默认）
+	for node in quene:
+		node.visible = false
+		node.stop() # 停止动画（很重要）
 
 func push_note(index: int):
 	if is_moving:

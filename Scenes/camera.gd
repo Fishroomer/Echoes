@@ -9,6 +9,7 @@ extends Camera2D
 
 var recovery := 0.0
 var strength := 0.0
+var camera_tween: Tween
 
 func screen_shake(delta) -> void:
 	if strength != 0:
@@ -33,5 +34,17 @@ func _ready() -> void:
 func on_screen_shake(shake_name:String) -> void:
 	apply_screen_shake(shake_name)
 
-func on_change_room(_room_number,camera_position: Vector2, _new_player_spawn_position: Vector2i) -> void:
-	self.global_position = camera_position
+# 建议在类开头定义一个变量来存储当前运行的 tween
+
+
+func on_change_room(_room_number, camera_position: Vector2, _new_player_spawn_position: Vector2i) -> void:
+	# 1. 如果当前已经有一个动画在跑，先停止它，防止位置冲突
+	if camera_tween:
+		camera_tween.kill()
+	# 2. 创建一个新的 Tween
+	camera_tween = create_tween()
+	# 3. 设置平滑曲线（可选，TRANS_QUART 或 TRANS_SINE 通常手感较好）
+	camera_tween.set_trans(Tween.TRANS_SINE)
+	camera_tween.set_ease(Tween.EASE_OUT)
+	# 4. 执行补间动画：在 0.2 秒内将 global_position 移动到目标位置
+	camera_tween.tween_property(self, "global_position", camera_position, 0.2)

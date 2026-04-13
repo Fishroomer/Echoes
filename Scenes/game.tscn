@@ -361,7 +361,7 @@ spawn_cell_position = Vector2i(35, 35)
 position = Vector2(236, 364)
 password = Array[Array]([[1, 0, 0, 0, 0], [0, 0, 0, 0, 1], [1, 0, 0, 0, 0], [0, 0, 0, 0, 1]])
 door_id = 7
-room_number = 5
+room_number = 52
 spawn_cell_position = Vector2i(29, 45)
 
 [node name="Door8" parent="Walls" instance=ExtResource("3_ldgsr")]
@@ -576,11 +576,11 @@ room_number = 5
 spawn_cell_position = Vector2i(40, 33)
 
 [node name="SoundReflectionCrate3" parent="Blocks" instance=ExtResource("4_wowpa")]
-room_number = 5
+room_number = 52
 spawn_cell_position = Vector2i(38, 46)
 
 [node name="SoundReflectionCrate4" parent="Blocks" instance=ExtResource("4_wowpa")]
-room_number = 5
+room_number = 52
 spawn_cell_position = Vector2i(41, 46)
 
 [node name="SoundDeflectionCrate" parent="Blocks" instance=ExtResource("7_iivbl")]
@@ -592,11 +592,11 @@ room_number = 5
 spawn_cell_position = Vector2i(39, 33)
 
 [node name="SoundDeflectionCrate3" parent="Blocks" instance=ExtResource("9_exi56")]
-room_number = 5
+room_number = 52
 spawn_cell_position = Vector2i(39, 46)
 
 [node name="SoundDeflectionCrate4" parent="Blocks" instance=ExtResource("10_7t8sx")]
-room_number = 5
+room_number = 52
 spawn_cell_position = Vector2i(40, 46)
 
 [node name="Zqj" parent="Blocks" instance=ExtResource("8_1phco")]
@@ -677,7 +677,7 @@ position = Vector2(252, 124)
 room_id = 5
 
 [node name="RestartPoint8" parent="Toys" instance=ExtResource("5_rku1e")]
-position = Vector2(268, 239)
+position = Vector2(268, 236)
 room_id = 51
 
 [node name="RestartPoint6" parent="Toys" instance=ExtResource("5_rku1e")]
@@ -687,6 +687,10 @@ room_id = 6
 [node name="RestartPoint7" parent="Toys" instance=ExtResource("5_rku1e")]
 position = Vector2(388, 148)
 room_id = 7
+
+[node name="RestartPoint52" parent="Toys" instance=ExtResource("5_rku1e")]
+position = Vector2(348, 364)
+room_id = 52
 
 [node name="Levels" type="Node2D" parent="."]
 
@@ -733,43 +737,61 @@ camera_Position = Vector2(300, 154)
 player_respawn_position = Vector2(31, 15)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Levels/Level5"]
-polygon = PackedVector2Array(198, 114, 197, 135, 224, 136, 225, 198, 272, 200, 272, 190, 296, 191, 295, 185, 350, 184, 351, 104, 271, 104, 271, 88, 284, 87, 284, 80, 264, 80, 264, 88)
+polygon = PackedVector2Array(198, 114, 197, 135, 224, 136, 225, 198, 272, 200, 272, 190, 296, 191, 295, 185, 350, 184, 351, 104, 271, 104, 271, 88, 272, 100, 262, 97, 263, 96, 260, 98)
 
 [node name="Level5_1" parent="Levels" instance=ExtResource("7_1l0tm")]
 z_index = 5
 room_number = 51
-camera_Position = Vector2(300, 240)
-player_respawn_position = Vector2(31, 15)
+camera_Position = Vector2(300, 272)
+player_respawn_position = Vector2(33, 29)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Levels/Level5_1"]
-polygon = PackedVector2Array(248, 206, 248, 248, 248, 305, 282, 304, 280, 289, 304, 289, 304, 337, 368, 337, 371, 253, 378, 204, 305, 197, 297, 196, 296, 208)
+polygon = PackedVector2Array(248, 206, 248, 248, 248, 305, 282, 304, 280, 289, 304, 289, 334, 313, 369, 316, 371, 253, 367, 209, 303, 220, 290, 248, 287, 208)
 
 [node name="Level5_2" parent="Levels" instance=ExtResource("7_1l0tm")]
 z_index = 5
-room_number = 5
+room_number = 52
 camera_Position = Vector2(276, 374)
-player_respawn_position = Vector2(31, 15)
+player_respawn_position = Vector2(43, 45)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Levels/Level5_2"]
-polygon = PackedVector2Array(303, 345, 368, 345, 354, 395, 352, 424, 231, 425, 231, 360, 184, 360, 183, 319)
+polygon = PackedVector2Array(330, 318, 369, 321, 354, 395, 352, 424, 231, 425, 231, 360, 184, 360, 183, 319)
 
 [node name="Level6" parent="Levels" instance=ExtResource("7_1l0tm")]
 z_index = 5
 room_number = 6
-camera_Position = Vector2(454, 341)
+camera_Position = Vector2(454, 371)
 player_respawn_position = Vector2(53, 52)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Levels/Level6"]
-polygon = PackedVector2Array(359, 423, 530, 425, 530, 254, 381, 254)
+polygon = PackedVector2Array(359, 423, 528, 426, 528, 355, 374, 356)
+
+[node name="Level8" parent="Levels" instance=ExtResource("7_1l0tm")]
+z_index = 5
+room_number = 6
+camera_Position = Vector2(454, 280)
+player_respawn_position = Vector2(53, 52)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Levels/Level8"]
+polygon = PackedVector2Array(528, 350, 519, 350, 519, 267, 372, 268, 373, 253, 528, 254)
 
 [node name="Level7" parent="Levels" instance=ExtResource("7_1l0tm")]
 z_index = 5
 room_number = 8
-camera_Position = Vector2(336, 148)
+camera_Position = Vector2(336, 198)
 player_respawn_position = Vector2(48, 18)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Levels/Level7"]
-polygon = PackedVector2Array(291, 80, 288, 88, 365, 92, 383, 216, 416, 216, 418, 119)
+polygon = PackedVector2Array(367, 141, 372, 133, 369, 137, 381, 217, 416, 216, 416, 130)
+
+[node name="Level9" parent="Levels" instance=ExtResource("7_1l0tm")]
+z_index = 5
+room_number = 8
+camera_Position = Vector2(300, 100)
+player_respawn_position = Vector2(48, 18)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Levels/Level9"]
+polygon = PackedVector2Array(416, 127, 370, 128, 368, 90, 271, 93, 265, 91, 265, 81, 375, 81)
 
 [node name="Player" parent="." instance=ExtResource("2_wrm1d")]
 z_index = 100
