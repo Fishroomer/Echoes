@@ -49,6 +49,8 @@ signal color_button_pressed(button_number:int)
 @warning_ignore("unused_signal")
 signal coin_collectied()
 
+var coin_count:int = 0
+
 func play_note(note_number:int):
 	print("记录声音"+str(note_number))
 	notes[note_number] = 1
@@ -130,4 +132,6 @@ func on_beat() -> void:
 
 
 func _on_coin_collectied() -> void:
-	pass # Replace with function body.
+	coin_count += 1
+	if coin_count == 3:
+		Transition.change_scene("res://Scenes/thanks.tscn")
