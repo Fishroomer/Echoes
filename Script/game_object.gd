@@ -39,24 +39,24 @@ func move_to(cell: Vector2i):
 
 func is_wall(cell:Vector2i) -> bool:
 	var data := map.get_cell_tile_data(cell)
-	if not data:
-		for wall: Wall in get_tree().get_nodes_in_group("Wall"):
-			if wall.cell_position == cell:
-				if wall.is_tunnel_door:
-					var tunnel_door:Tunnel_door = wall
-					if not tunnel_door.direction:
-						if (cell_position - cell).x == 0:
-							return false
-						else:
-							return true
+	if data:
+		return data.get_custom_data("is_wall")
+	for wall: Wall in get_tree().get_nodes_in_group("Wall"):
+		if wall.cell_position == cell:
+			if wall.is_tunnel_door:
+				var tunnel_door:Tunnel_door = wall
+				if not tunnel_door.direction:
+					if (cell_position - cell).x == 0:
+						return false
 					else:
-						if (cell_position - cell).y == 0:
-							return false
-						else:
-							return true
-				return wall.is_wall
-		return false
-	return data.get_custom_data("is_wall")
+						return true
+				else:
+					if (cell_position - cell).y == 0:
+						return false
+					else:
+						return true
+			return wall.is_wall
+	return false
 
 func get_crate(cell:Vector2i) -> GameObject:
 	for crate: GameObject in get_tree().get_nodes_in_group("crates"):
