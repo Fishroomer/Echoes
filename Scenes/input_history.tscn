@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bl1jaxaj4hyqj" path="res://Scenes/input_history.gd" id="1_n32ql"]
 [ext_resource type="SpriteFrames" uid="uid://uatfgmvfgf1" path="res://Resource/input_history.tres" id="2_iekts"]
 
-[node name="InputHistory" type="Node2D"]
+[node name="InputHistory" type="Node2D" groups=["OnBeats"]]
 script = ExtResource("1_n32ql")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -14,6 +14,7 @@ region_enabled = true
 region_rect = Rect2(0, 160, 320, 16)
 
 [node name="Notes" type="Node2D" parent="."]
+z_index = 1
 position = Vector2(-120, 0)
 
 [node name="1" type="AnimatedSprite2D" parent="Notes"]
@@ -116,3 +117,9 @@ visible = false
 position = Vector2(256, 0)
 sprite_frames = ExtResource("2_iekts")
 animation = &"1"
+
+[node name="JZY" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("1_8fepm")
+region_enabled = true
+region_rect = Rect2(16, 16, 288, 16)

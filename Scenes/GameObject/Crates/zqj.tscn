@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=3 uid="uid://ch1hojrdu7xvv"]
+
+[ext_resource type="Script" uid="uid://cll0ptam1u5bn" path="res://Scenes/GameObject/Crates/zqj.gd" id="1_e7q3q"]
+[ext_resource type="Texture2D" uid="uid://bmaltcb2ct1n" path="res://Resource/Graphics/material_zhangqijun.png" id="2_ut5ip"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0k3j3"]
+atlas = ExtResource("2_ut5ip")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mnhea"]
+atlas = ExtResource("2_ut5ip")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wp3lf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0k3j3")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mnhea")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wp3lf"]
+atlas = ExtResource("2_ut5ip")
+region = Rect2(8, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ut5ip"]
+atlas = ExtResource("2_ut5ip")
+region = Rect2(0, 8, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0k3j3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wp3lf")
+}],
+"loop": false,
+"name": &"awake",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ut5ip")
+}],
+"loop": false,
+"name": &"sleep",
+"speed": 5.0
+}]
+
+[node name="Zqj" type="Node2D" groups=["GameObject", "Reset", "crates"]]
+script = ExtResource("1_e7q3q")
+sound_reflection = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wp3lf")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0k3j3")
+animation = &"awake"
+autoplay = "sleep"

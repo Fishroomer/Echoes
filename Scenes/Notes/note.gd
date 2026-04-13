@@ -17,6 +17,8 @@ var direction:Vector2i = Vector2i.ZERO
 
 var alive:bool = false #是否处于活跃状态
 
+var wild:bool = true #是否处于野生状态
+
 #region 处理转向
 const DIR_UP = Vector2i(0, -1)
 const DIR_DOWN = Vector2i(0, 1)
@@ -171,6 +173,9 @@ func play_note() -> void:
 	EventManager.play_note(note_number)
 
 func dead() -> void:
+	#第一次回收则不再野生
+	if wild:
+		wild = false
 	cell_position.x += 114 #魔法数字移到魔法位置嘻嘻嘻
 	visible = false
 	alive = false
@@ -180,4 +185,7 @@ func shoot() -> void:
 	shooted = true
 
 func reset() -> void:
+	#如果处于野生状态，额外逻辑
+	if wild:
+		return
 	dead()

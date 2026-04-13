@@ -34,4 +34,4 @@ texture = ExtResource("1_w31pl")
 position = Vector2(160, 160)
 sprite_frames = SubResource("SpriteFrames_3eqdi")
 autoplay = "default"
-frame_progress = 0.13442725
+frame_progress = 0.45896393

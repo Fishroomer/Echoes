@@ -38,6 +38,10 @@ func _process(_delta: float) -> void:
 	if tween and tween.is_running():
 		return
 	
+	if Input.is_action_pressed("R"):
+		get_tree().call_group("Reset", "reset")
+		return
+	
 	if Input.is_action_pressed("RIGHT") and notes[0]:
 		on_shoot_note[0] = true
 	if Input.is_action_pressed("UP") and notes[1]:
@@ -113,3 +117,7 @@ func shoot_note(note_number:int) -> void:
 	note[note_number].position = self.position
 	note[note_number].shoot()
 	notes[note_number] = false
+
+func reset():
+	self.position = map.map_to_local(EventManager.player_spawn_cell_position)
+	cell_position = EventManager.player_spawn_cell_position

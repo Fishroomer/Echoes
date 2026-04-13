@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://b1empdqe71vac"]
+
+[ext_resource type="Script" uid="uid://cugpdgo4fse2u" path="res://Scenes/Toys/restart_point.gd" id="1_2jwkg"]
+[ext_resource type="Texture2D" uid="uid://dgklwpl2t3bta" path="res://Resource/Graphics/material_restart_point.png" id="1_odprb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jwkg"]
+atlas = ExtResource("1_odprb")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2g7tu"]
+atlas = ExtResource("1_odprb")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_382rq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jwkg")
+}],
+"loop": false,
+"name": &"close",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2g7tu")
+}],
+"loop": false,
+"name": &"open",
+"speed": 5.0
+}]
+
+[node name="RestartPoint" type="Node2D"]
+script = ExtResource("1_2jwkg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_382rq")
+animation = &"open"
+autoplay = "close"

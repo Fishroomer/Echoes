@@ -19,6 +19,7 @@ func open() -> void:
 	print("我open!")
 	self.visible = false
 	is_wall = false
+	sound_absorb = false
 
 func reset():
 	pass

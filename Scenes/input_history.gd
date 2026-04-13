@@ -20,6 +20,8 @@ extends Node2D
 @onready var _16: AnimatedSprite2D = $"Notes/16"
 @onready var _17: AnimatedSprite2D = $"Notes/17"
 
+@onready var jzy: Sprite2D = $JZY
+
 @onready var quene :Array[AnimatedSprite2D]= [_1,_2,_3,_4,_5,_6,_7,_8,_9,_10,_11,_12,_13,_14,_15,_16,_17]
 
 const SPACING := 16
@@ -81,3 +83,10 @@ func _recycle_and_update(index: int):
 	else:
 		last.visible = true
 		last.play(str(index)) # 动画名 = index
+
+func on_beat() -> void:
+	# 先瞬间变亮
+	jzy.modulate.a = 1.0
+	# 创建 Tween
+	var tween = create_tween()
+	tween.tween_property(jzy, "modulate:a", 0.0, 0.1)

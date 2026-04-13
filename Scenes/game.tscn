@@ -45,19 +45,22 @@ spawn_cell_position = Vector2i(18, 11)
 [node name="SoundAbsorbCrate2" parent="Blocks" instance=ExtResource("4_wowpa")]
 spawn_cell_position = Vector2i(18, 12)
 
-[node name="Player" parent="." instance=ExtResource("2_wrm1d")]
-z_index = 100
-spawn_cell_position = Vector2i(16, 12)
+[node name="Toys" type="Node2D" parent="."]
 
 [node name="Levels" type="Node2D" parent="."]
 
 [node name="Level1" parent="Levels" instance=ExtResource("7_1l0tm")]
 z_index = 5
 camera_Position = Vector2(160, 90)
+player_respawn_position = Vector2(16, 12)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Levels/Level1"]
 position = Vector2(129, 104)
 shape = SubResource("RectangleShape2D_1l0tm")
+
+[node name="Player" parent="." instance=ExtResource("2_wrm1d")]
+z_index = 100
+spawn_cell_position = Vector2i(16, 12)
 
 [node name="Camera" parent="." instance=ExtResource("8_v158k")]
 

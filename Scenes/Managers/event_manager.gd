@@ -20,7 +20,7 @@ var note_position = {
 var player_position:Vector2i = Vector2i(0,0)
 var current_room:int = 0
 var current_map:TileMapLayer
-var player_spawn_position:Vector2i = Vector2i(0,0)
+var player_spawn_cell_position:Vector2i = Vector2i(0,0)
 
 var notes_history := [] # 最近40次音符
 var notes := [0,0,0,0,0]  # 当前输入音符，右上左下，捣蛋，捣蛋会覆盖全部
@@ -37,6 +37,9 @@ signal note_absorb(note_number:int)
 signal change_room(room_number:int,camera_position:Vector2,new_player_spawn_position:Vector2i)
 
 signal node_history_update(index:int)
+
+@warning_ignore("unused_signal")
+signal screen_shake(shake_name:String)
 
 func play_note(note_number:int):
 	print("记录声音"+str(note_number))
@@ -97,7 +100,7 @@ func try_open_door() -> void:
 
 func _on_change_room(room_number, _camera_position: Vector2, new_player_spawn_position: Vector2i) -> void:
 	current_room = room_number
-	player_spawn_position = new_player_spawn_position
+	player_spawn_cell_position = new_player_spawn_position
 	# （可选）跨房间清空输入
 	# notes_history.clear()
 	# notes = [0,0,0,0,0]
