@@ -22,7 +22,7 @@ extends Node2D
 
 @onready var jzy: Sprite2D = $JZY
 @export var beat_count:int = 4
-var count_beat:int = 0
+var count_beat:int = 1
 
 @onready var quene :Array[AnimatedSprite2D]= [_1,_2,_3,_4,_5,_6,_7,_8,_9,_10,_11,_12,_13,_14,_15,_16,_17]
 

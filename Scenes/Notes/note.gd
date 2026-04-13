@@ -216,8 +216,5 @@ func shoot() -> void:
 func reset() -> void:
 	#如果处于野生状态，额外逻辑
 	if wild:
-		cell_position.x += 114 #魔法数字移到魔法位置嘻嘻嘻
-		visible = false
-		alive = false
 		return
 	dead()

@@ -38,9 +38,7 @@ func move_to(cell: Vector2i):
 	tween.tween_property(self,"position",map.map_to_local(cell),interval_time/2)
 
 func is_wall(cell:Vector2i) -> bool:
-	var data := map.get_cell_tile_data(cell)
-	if data:
-		return data.get_custom_data("is_wall")
+	return false
 	for wall: Wall in get_tree().get_nodes_in_group("Wall"):
 		if wall.cell_position == cell:
 			if wall.is_tunnel_door:
@@ -56,6 +54,9 @@ func is_wall(cell:Vector2i) -> bool:
 					else:
 						return true
 			return wall.is_wall
+	var data := map.get_cell_tile_data(cell)
+	if data:
+		return data.get_custom_data("is_wall")
 	return false
 
 func get_crate(cell:Vector2i) -> GameObject:

@@ -267,95 +267,6 @@ tile_set = SubResource("TileSet_iivbl")
 [node name="Walls" type="Node2D" parent="."]
 z_index = 2
 
-[node name="SoundAbsorbCrate" parent="Walls" instance=ExtResource("3_3dryh")]
-room_number = 2
-spawn_cell_position = Vector2i(12, 4)
-
-[node name="SoundAbsorbCrate2" parent="Walls" instance=ExtResource("3_3dryh")]
-room_number = 3
-spawn_cell_position = Vector2i(16, 9)
-
-[node name="SoundReflectionCrate" parent="Walls" instance=ExtResource("4_wowpa")]
-room_number = 5
-spawn_cell_position = Vector2i(37, 33)
-
-[node name="SoundReflectionCrate2" parent="Walls" instance=ExtResource("4_wowpa")]
-room_number = 5
-spawn_cell_position = Vector2i(40, 33)
-
-[node name="SoundReflectionCrate3" parent="Walls" instance=ExtResource("4_wowpa")]
-room_number = 5
-spawn_cell_position = Vector2i(38, 46)
-
-[node name="SoundReflectionCrate4" parent="Walls" instance=ExtResource("4_wowpa")]
-room_number = 5
-spawn_cell_position = Vector2i(41, 46)
-
-[node name="SoundDeflectionCrate" parent="Walls" instance=ExtResource("7_iivbl")]
-room_number = 5
-spawn_cell_position = Vector2i(38, 46)
-
-[node name="SoundDeflectionCrate2" parent="Walls" instance=ExtResource("8_7nbq1")]
-room_number = 5
-spawn_cell_position = Vector2i(39, 33)
-
-[node name="SoundDeflectionCrate3" parent="Walls" instance=ExtResource("9_exi56")]
-room_number = 5
-spawn_cell_position = Vector2i(39, 46)
-
-[node name="SoundDeflectionCrate4" parent="Walls" instance=ExtResource("10_7t8sx")]
-room_number = 5
-spawn_cell_position = Vector2i(40, 46)
-
-[node name="Zqj" parent="Walls" instance=ExtResource("8_1phco")]
-position = Vector2(84, 118)
-room_number = 4
-spawn_cell_position = Vector2i(10, 14)
-
-[node name="Zqj2" parent="Walls" instance=ExtResource("8_1phco")]
-position = Vector2(268, 260)
-beat_count = 7
-room_number = 5
-spawn_cell_position = Vector2i(33, 32)
-
-[node name="Zqj3" parent="Walls" instance=ExtResource("8_1phco")]
-position = Vector2(204, 340)
-beat_count = 2
-room_number = 5
-spawn_cell_position = Vector2i(25, 42)
-
-[node name="Zqj4" parent="Walls" instance=ExtResource("8_1phco")]
-position = Vector2(348, 316)
-beat_count = 6
-room_number = 5
-spawn_cell_position = Vector2i(43, 39)
-
-[node name="Zqj5" parent="Walls" instance=ExtResource("8_1phco")]
-position = Vector2(388, 436)
-beat_count = 1
-room_number = 6
-spawn_cell_position = Vector2i(48, 54)
-
-[node name="Zqj6" parent="Walls" instance=ExtResource("8_1phco")]
-position = Vector2(460, 388)
-room_number = 6
-spawn_cell_position = Vector2i(57, 48)
-
-[node name="Zqj7" parent="Walls" instance=ExtResource("8_1phco")]
-position = Vector2(484, 388)
-room_number = 6
-spawn_cell_position = Vector2i(60, 48)
-
-[node name="Zqj8" parent="Walls" instance=ExtResource("8_1phco")]
-position = Vector2(460, 404)
-room_number = 6
-spawn_cell_position = Vector2i(57, 50)
-
-[node name="Zqj9" parent="Walls" instance=ExtResource("8_1phco")]
-position = Vector2(484, 404)
-room_number = 6
-spawn_cell_position = Vector2i(60, 50)
-
 [node name="Door1" parent="Walls" instance=ExtResource("3_ldgsr")]
 position = Vector2(12, 76)
 door_id = 1
@@ -493,11 +404,6 @@ position = Vector2(284, 148)
 room_number = 5
 spawn_cell_position = Vector2i(35, 18)
 
-[node name="NoteShooter" parent="Walls" instance=ExtResource("6_nnt18")]
-position = Vector2(292, 148)
-room_number = 5
-spawn_cell_position = Vector2i(36, 18)
-
 [node name="Coin" parent="Walls" instance=ExtResource("16_mg4q0")]
 room_number = 3
 spawn_cell_position = Vector2i(21, 5)
@@ -602,13 +508,107 @@ room_number = 5
 spawn_cell_position = Vector2i(30, 52)
 
 [node name="SingleWayDoor3" parent="Walls" instance=ExtResource("8_ewbju")]
-position = Vector2(300, 212)
+position = Vector2(300, 204)
 direction = Vector2i(0, 1)
 room_number = 5
-spawn_cell_position = Vector2i(37, 26)
+spawn_cell_position = Vector2i(37, 25)
 
 [node name="Blocks" type="Node2D" parent="."]
 z_index = 2
+
+[node name="SoundAbsorbCrate" parent="Blocks" instance=ExtResource("3_3dryh")]
+room_number = 2
+spawn_cell_position = Vector2i(12, 4)
+
+[node name="SoundAbsorbCrate2" parent="Blocks" instance=ExtResource("3_3dryh")]
+room_number = 3
+spawn_cell_position = Vector2i(16, 9)
+
+[node name="SoundReflectionCrate" parent="Blocks" instance=ExtResource("4_wowpa")]
+room_number = 5
+spawn_cell_position = Vector2i(37, 33)
+
+[node name="SoundReflectionCrate2" parent="Blocks" instance=ExtResource("4_wowpa")]
+room_number = 5
+spawn_cell_position = Vector2i(40, 33)
+
+[node name="SoundReflectionCrate3" parent="Blocks" instance=ExtResource("4_wowpa")]
+room_number = 5
+spawn_cell_position = Vector2i(38, 46)
+
+[node name="SoundReflectionCrate4" parent="Blocks" instance=ExtResource("4_wowpa")]
+room_number = 5
+spawn_cell_position = Vector2i(41, 46)
+
+[node name="SoundDeflectionCrate" parent="Blocks" instance=ExtResource("7_iivbl")]
+room_number = 5
+spawn_cell_position = Vector2i(38, 33)
+
+[node name="SoundDeflectionCrate2" parent="Blocks" instance=ExtResource("8_7nbq1")]
+room_number = 5
+spawn_cell_position = Vector2i(39, 33)
+
+[node name="SoundDeflectionCrate3" parent="Blocks" instance=ExtResource("9_exi56")]
+room_number = 5
+spawn_cell_position = Vector2i(39, 46)
+
+[node name="SoundDeflectionCrate4" parent="Blocks" instance=ExtResource("10_7t8sx")]
+room_number = 5
+spawn_cell_position = Vector2i(40, 46)
+
+[node name="Zqj" parent="Blocks" instance=ExtResource("8_1phco")]
+position = Vector2(84, 118)
+room_number = 4
+spawn_cell_position = Vector2i(10, 14)
+
+[node name="Zqj2" parent="Blocks" instance=ExtResource("8_1phco")]
+position = Vector2(268, 260)
+beat_count = 7
+room_number = 5
+spawn_cell_position = Vector2i(33, 32)
+
+[node name="Zqj3" parent="Blocks" instance=ExtResource("8_1phco")]
+position = Vector2(204, 340)
+beat_count = 2
+room_number = 5
+spawn_cell_position = Vector2i(25, 42)
+
+[node name="Zqj4" parent="Blocks" instance=ExtResource("8_1phco")]
+position = Vector2(348, 316)
+beat_count = 6
+room_number = 5
+spawn_cell_position = Vector2i(43, 39)
+
+[node name="Zqj5" parent="Blocks" instance=ExtResource("8_1phco")]
+position = Vector2(388, 436)
+beat_count = 1
+room_number = 6
+spawn_cell_position = Vector2i(48, 54)
+
+[node name="Zqj6" parent="Blocks" instance=ExtResource("8_1phco")]
+position = Vector2(460, 388)
+room_number = 6
+spawn_cell_position = Vector2i(57, 48)
+
+[node name="Zqj7" parent="Blocks" instance=ExtResource("8_1phco")]
+position = Vector2(484, 388)
+room_number = 6
+spawn_cell_position = Vector2i(60, 48)
+
+[node name="Zqj8" parent="Blocks" instance=ExtResource("8_1phco")]
+position = Vector2(460, 404)
+room_number = 6
+spawn_cell_position = Vector2i(57, 50)
+
+[node name="Zqj9" parent="Blocks" instance=ExtResource("8_1phco")]
+position = Vector2(484, 404)
+room_number = 6
+spawn_cell_position = Vector2i(60, 50)
+
+[node name="NoteShooter" parent="Blocks" instance=ExtResource("6_nnt18")]
+position = Vector2(292, 148)
+room_number = 5
+spawn_cell_position = Vector2i(36, 18)
 
 [node name="Toys" type="Node2D" parent="."]
 z_index = 2
@@ -632,6 +632,10 @@ room_id = 4
 [node name="RestartPoint5" parent="Toys" instance=ExtResource("5_rku1e")]
 position = Vector2(252, 124)
 room_id = 5
+
+[node name="RestartPoint8" parent="Toys" instance=ExtResource("5_rku1e")]
+position = Vector2(268, 239)
+room_id = 51
 
 [node name="RestartPoint6" parent="Toys" instance=ExtResource("5_rku1e")]
 position = Vector2(428, 420)
@@ -659,7 +663,7 @@ camera_Position = Vector2(80, 48)
 player_respawn_position = Vector2(10, 6)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Levels/Level2"]
-polygon = PackedVector2Array(48, 25, 48, 47, 64, 48, 64, 64, 80, 64, 80, 80, 80, 88, 112, 88, 112, 32, 121, 33, 121, 40, 135, 41, 144, 41, 144, 24)
+polygon = PackedVector2Array(48, 25, 48, 47, 64, 48, 64, 64, 80, 64, 80, 80, 80, 88, 112, 88, 112, 32, 121, 33, 121, 40, 133, 38, 146, 36, 144, 24)
 
 [node name="Level3" parent="Levels" instance=ExtResource("7_1l0tm")]
 z_index = 5
@@ -668,7 +672,7 @@ camera_Position = Vector2(136, 64)
 player_respawn_position = Vector2(17, 8)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Levels/Level3"]
-polygon = PackedVector2Array(120, 48, 119, 87, 128, 88, 128, 99, 135, 98, 136, 87, 143, 88, 143, 55, 152, 56, 153, 64, 192, 64, 192, 25, 152, 24, 154, 47, 144, 48, 144, 45, 135, 45, 135, 47)
+polygon = PackedVector2Array(120, 48, 119, 87, 128, 88, 128, 99, 135, 98, 136, 87, 143, 88, 143, 55, 152, 56, 153, 64, 192, 64, 192, 25, 152, 24, 154, 47, 144, 48, 144, 49, 135, 49, 135, 47)
 
 [node name="Level4" parent="Levels" instance=ExtResource("7_1l0tm")]
 z_index = 5
@@ -682,7 +686,7 @@ polygon = PackedVector2Array(63, 96, 64, 135, 195, 137, 194, 128, 194, 113, 161,
 [node name="Level5" parent="Levels" instance=ExtResource("7_1l0tm")]
 z_index = 5
 room_number = 5
-camera_Position = Vector2(329, 153)
+camera_Position = Vector2(300, 154)
 player_respawn_position = Vector2(31, 15)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Levels/Level5"]
@@ -690,7 +694,7 @@ polygon = PackedVector2Array(198, 114, 197, 135, 224, 136, 225, 198, 272, 200, 2
 
 [node name="Level5_1" parent="Levels" instance=ExtResource("7_1l0tm")]
 z_index = 5
-room_number = 5
+room_number = 51
 camera_Position = Vector2(300, 240)
 player_respawn_position = Vector2(31, 15)
 

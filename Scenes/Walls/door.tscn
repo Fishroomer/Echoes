@@ -13,3 +13,4 @@ sound_absorb = true
 texture = ExtResource("2_oc7ue")
 region_enabled = true
 region_rect = Rect2(32, 48, 8, 8)
+region_filter_clip_enabled = true

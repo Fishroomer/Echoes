@@ -30,4 +30,4 @@ func reset() -> void:
 	if EventManager.current_room != room_number:
 		return
 	if EventManager.notes_to_shoot[shooter_number].wild:
-		shooted = false
+		return
