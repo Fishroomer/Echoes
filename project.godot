@@ -21,6 +21,7 @@ config/stretch/mode="canvas_items"
 AudioManager="*res://Scenes/Managers/audio_manager.tscn"
 EventManager="*res://Scenes/Managers/event_manager.tscn"
 BeatManager="*res://Scenes/Managers/beat_manager.tscn"
+Transition="*res://Scenes/Managers/transition.tscn"
 
 [display]
 

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cnm18l5tkjaup" path="res://Scenes/GameObject/Crates/sound_reflection_crate.gd" id="1_fnfcv"]
 [ext_resource type="Texture2D" uid="uid://hwaaiuuc6bjq" path="res://Resource/Graphics/material_1.png" id="2_ehanw"]
 
-[node name="SoundAbsorbCrate" type="Node2D" groups=["GameObject", "Reset", "crates"]]
+[node name="SoundReflectionCrate" type="Node2D" groups=["GameObject", "Reset", "crates"]]
 script = ExtResource("1_fnfcv")
 sound_reflection = true
 

@@ -42,7 +42,6 @@ func is_wall(cell:Vector2i) -> bool:
 	if not data:
 		for wall: Wall in get_tree().get_nodes_in_group("Wall"):
 			if wall.cell_position == cell:
-				#！！！如果是管道门这种复杂情况要添加逻辑
 				if wall.is_tunnel_door:
 					var tunnel_door:Tunnel_door = wall
 					if not tunnel_door.direction:
