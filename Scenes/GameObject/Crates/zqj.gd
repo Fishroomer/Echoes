@@ -21,11 +21,11 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 		active = false
 
 func on_beat() -> void:
-	if not active:
-		return
 	count_beat+=1
 	face.play("default")
 	if count_beat >= beat_count:
 		face.play("shoot")
 		count_beat = 0
+		if not active:
+			return
 		EventManager.play_note(4)

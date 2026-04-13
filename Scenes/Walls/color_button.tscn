@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxt16hfdmi8t2"]
+
+[ext_resource type="Texture2D" uid="uid://hwaaiuuc6bjq" path="res://Resource/Graphics/material_1.png" id="1_3hhtq"]
+[ext_resource type="Script" uid="uid://du1oqn7hwyc0k" path="res://Scenes/Walls/color_button.gd" id="1_uxkff"]
+
+[node name="ColorButton" type="Node2D" groups=["OnBeats"]]
+script = ExtResource("1_uxkff")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3hhtq")
+region_enabled = true
+region_rect = Rect2(48, 56, 8, 8)
+region_filter_clip_enabled = true

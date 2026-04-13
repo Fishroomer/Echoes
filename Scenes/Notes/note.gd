@@ -98,7 +98,7 @@ func try_move() -> void:
 	#判定终点在map上格子的性质（反射/吸收/折射）
 	if EventManager.current_map:
 		var cell = EventManager.current_map.local_to_map(EventManager.current_map.to_local(cell_to_world(target_cell_position)))
-		var data := EventManager.current_map.get_cell_tile_data(cell)
+		var data :TileData= EventManager.current_map.get_cell_tile_data(cell)
 		if data:
 			if data.get_custom_data("is_sound_absorb"):
 				sound_absorbed()
@@ -161,10 +161,10 @@ func sound_deflection(deflect_map: Vector4i) -> void: #折射
 	direction = index_to_dir(new_index)
 	play_note()
 
-func _on_area_2d_area_entered(area: Area2D) -> void:
-	if not alive:
-		return
-	dead()
+#func _on_area_2d_area_entered(area: Area2D) -> void:
+	#if not alive:
+		#return
+	#dead()
 
 func play_note() -> void:
 	EventManager.play_note(note_number)

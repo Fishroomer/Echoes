@@ -25,6 +25,8 @@ var player_spawn_cell_position:Vector2i = Vector2i(0,0)
 var notes_history := [] # 最近40次音符
 var notes := [0,0,0,0,0]  # 当前输入音符，右上左下，捣蛋，捣蛋会覆盖全部
 
+var notes_to_shoot :Array[Note] = []
+
 var button_state:bool = false
 var open_button_count:int = 0
 
@@ -40,6 +42,9 @@ signal node_history_update(index:int)
 
 @warning_ignore("unused_signal")
 signal screen_shake(shake_name:String)
+
+@warning_ignore("unused_signal")
+signal color_button_pressed(button_number:int)
 
 func play_note(note_number:int):
 	print("记录声音"+str(note_number))

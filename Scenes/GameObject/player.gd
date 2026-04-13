@@ -24,6 +24,12 @@ var input_buffer: Vector2i = Vector2i.ZERO
 func _ready() -> void:
 	EventManager.note_absorb.connect(on_note_absorb)
 
+func set_map(m: TileMapLayer): #初始化地图函数，依赖注入
+	map = m
+	# 初始化位置
+	position = map.map_to_local(spawn_cell_position)
+	cell_position = spawn_cell_position
+	EventManager.notes_to_shoot = note
 
 func on_beat() -> void:
 	for i in range(4):
