@@ -6,8 +6,9 @@ extends Node
 enum Bus {Master,BGM,SFX}
 
 func play_sfx(sfxname:String):
-	var player := sfx.get_node(sfxname) as AudioStreamPlayer
+	var player := sfx.get_node(sfxname) as AudioStreamPlayer2D
 	if not player:
+		print("未找到")
 		return
 	player.play()
 

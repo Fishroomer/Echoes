@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://drhj7qu8vxggm"]
+
+[ext_resource type="Script" uid="uid://wlp68alsngnu" path="res://Scenes/Walls/coin.gd" id="1_l45tk"]
+[ext_resource type="Texture2D" uid="uid://xh7gw3u1xn7m" path="res://Resource/Graphics/material_coin.png" id="2_p3wjg"]
+
+[node name="Coin" type="Node2D" groups=["OnBeats", "Wall"]]
+script = ExtResource("1_l45tk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_p3wjg")

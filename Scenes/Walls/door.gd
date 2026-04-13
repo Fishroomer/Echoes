@@ -16,7 +16,7 @@ func on_open_door(doorid:int) -> void:
 		open()
 
 func open() -> void:
-	print("我open!")
+	AudioManager.play_sfx("门")
 	self.visible = false
 	is_wall = false
 	sound_absorb = false

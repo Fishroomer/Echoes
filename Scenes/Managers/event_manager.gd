@@ -46,6 +46,9 @@ signal screen_shake(shake_name:String)
 @warning_ignore("unused_signal")
 signal color_button_pressed(button_number:int)
 
+@warning_ignore("unused_signal")
+signal coin_collectied()
+
 func play_note(note_number:int):
 	print("记录声音"+str(note_number))
 	notes[note_number] = 1
@@ -71,7 +74,6 @@ func play_note_sfx() -> void:
 			if notes[i] == 1:
 				has_sound = true
 				print("发出声音", i)
-				AudioManager.play_sfx("note_" + str(i))
 		if not has_sound:
 			return
 		# 存入历史
@@ -125,3 +127,7 @@ func on_beat() -> void:
 	if new_button_state != button_state:
 		get_tree().call_group("OnButtonChange", "on_button_change")
 		button_state = new_button_state
+
+
+func _on_coin_collectied() -> void:
+	pass # Replace with function body.

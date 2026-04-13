@@ -1,19 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://ddlym7y4clu3q"]
 
 [ext_resource type="Texture2D" uid="uid://bi7eq42urrojc" path="res://Resource/Graphics/material_shooter.png" id="1_eoud7"]
-[ext_resource type="Script" uid="uid://bx6ydf6j26rrf" path="res://Scenes/Walls/note_shooter.gd" id="1_gfoud"]
+[ext_resource type="Script" uid="uid://bx6ydf6j26rrf" path="res://Scenes/Walls/ColorShooters/note_shooter.gd" id="1_gfoud"]
 
-[node name="NoteShooter" type="Node2D" groups=["OnBeats"]]
+[node name="NoteShooter" type="Node2D" groups=["OnBeats", "Reset", "Wall"]]
 script = ExtResource("1_gfoud")
-shooter_number = null
 is_wall = true
-is_tunnel_door = null
-is_single_way_door = null
 sound_absorb = true
-sound_reflection = null
-sound_deflection = null
-room_number = null
-spawn_cell_position = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_eoud7")

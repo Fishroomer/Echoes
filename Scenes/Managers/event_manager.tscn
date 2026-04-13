@@ -6,3 +6,4 @@
 script = ExtResource("1_wyfyb")
 
 [connection signal="change_room" from="." to="." method="_on_change_room"]
+[connection signal="coin_collectied" from="." to="." method="_on_coin_collectied"]

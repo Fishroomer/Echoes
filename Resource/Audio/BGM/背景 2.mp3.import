@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bakha0p5ku8ql"
+path="res://.godot/imported/背景 2.mp3-6094358811de249ffa170e0a2e3494c1.mp3str"
+
+[deps]
+
+source_file="res://Resource/Audio/BGM/背景 2.mp3"
+dest_files=["res://.godot/imported/背景 2.mp3-6094358811de249ffa170e0a2e3494c1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

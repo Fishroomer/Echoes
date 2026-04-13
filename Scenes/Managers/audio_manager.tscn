@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://13nstyol5l1v"]
+[gd_scene load_steps=11 format=3 uid="uid://13nstyol5l1v"]
 
 [ext_resource type="Script" uid="uid://vd3fmq11ak0j" path="res://Scenes/Managers/audio_manager.gd" id="1_x8tha"]
+[ext_resource type="AudioStream" uid="uid://cfqwktmx0g7kq" path="res://Resource/Audio/SFX/1.mp3" id="2_kd5to"]
 [ext_resource type="AudioStream" uid="uid://j823113l317n" path="res://Resource/Audio/BGM/背景.mp3" id="2_kpiw8"]
+[ext_resource type="AudioStream" uid="uid://daotr7loo67a4" path="res://Resource/Audio/SFX/3.mp3" id="3_uwgts"]
+[ext_resource type="AudioStream" uid="uid://buh7u5ru8c0g1" path="res://Resource/Audio/SFX/5.mp3" id="4_57ce3"]
+[ext_resource type="AudioStream" uid="uid://br2cwv51wrq68" path="res://Resource/Audio/SFX/#1.mp3" id="5_bf05v"]
+[ext_resource type="AudioStream" uid="uid://dk2b4lwfksyid" path="res://Resource/Audio/SFX/移动(1).mp3" id="6_4savl"]
+[ext_resource type="AudioStream" uid="uid://bgpvvja72qi6v" path="res://Resource/Audio/SFX/捣蛋.mp3" id="6_bf05v"]
+[ext_resource type="AudioStream" uid="uid://dy1tvlg1j62j6" path="res://Resource/Audio/SFX/门.mp3" id="7_uwgts"]
+[ext_resource type="AudioStream" uid="uid://d3jhwfdn3vru1" path="res://Resource/Audio/SFX/重开-短(2).mp3" id="9_4savl"]
 
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_x8tha")
@@ -9,16 +17,28 @@ script = ExtResource("1_x8tha")
 [node name="SFX" type="Node" parent="."]
 
 [node name="note_0" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("2_kd5to")
 
 [node name="note_1" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("3_uwgts")
 
 [node name="note_2" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("4_57ce3")
 
 [node name="note_3" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("5_bf05v")
 
 [node name="捣蛋音" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("6_bf05v")
 
-[node name="玩家移动" type="AudioStreamPlayer2D" parent="SFX"]
+[node name="Move" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("6_4savl")
+
+[node name="门" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("7_uwgts")
+
+[node name="重开" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("9_4savl")
 
 [node name="BGMPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_kpiw8")

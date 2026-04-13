@@ -1,4 +1,4 @@
-extends "res://Script/Wall.gd"
+extends Wall
 
 @export var shooter_number:int = 0
 
@@ -18,10 +18,16 @@ func on_color_button_pressed(button_number:int) -> void:
 
 func on_beat() -> void:
 	if should_shoot:
-		shoot_note(shooter_number)
+		shoot_note()
 		should_shoot = false
 
-func shoot_note(shooter_number:int) -> void:
-	note[note_number].cell_position = cell_position
-	note[note_number].position = self.position
-	note[note_number].shoot()
+func shoot_note() -> void:
+	EventManager.notes_to_shoot[shooter_number].cell_position = cell_position
+	EventManager.notes_to_shoot[shooter_number].position = self.position
+	EventManager.notes_to_shoot[shooter_number].shoot()
+
+func reset() -> void:
+	if EventManager.current_room != room_number:
+		return
+	if EventManager.notes_to_shoot[shooter_number].wild:
+		shooted = false

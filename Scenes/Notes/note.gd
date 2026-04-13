@@ -39,6 +39,44 @@ func index_to_dir(i: int) -> Vector2i:
 		2: return Vector2i(-1, 0)  # 左
 		3: return Vector2i(0, 1)   # 下
 	return Vector2i.ZERO
+
+
+func sound_deflection(deflect_map: Vector4i) -> void: #折射
+	#逻辑，先移动到一半，判定，如果转向，则直接转向移动剩下一半，如果九十度转向，则先移动完剩下半个再修改direction
+	#先移动一半
+	var cell = cell_position + direction
+	if tween:
+		tween.kill()
+	tween = create_tween()
+	tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
+	tween.tween_property(self,"position",(cell_to_world(cell_position)*2+cell_to_world(cell))/3,interval_time/2)
+	await tween.finished
+	#判定
+	var i = dir_to_index(direction)
+	if i == -1:
+		return
+	var new_index = deflect_map[i]
+	var new_direction = index_to_dir(new_index)
+	if new_direction + direction == Vector2i.ZERO:
+		direction = - direction
+		play_note()
+		if tween:
+			tween.kill()
+		tween = create_tween()
+		tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+		tween.tween_property(self,"position",cell_to_world(cell_position),interval_time/2)
+	else:
+		#先移动完剩下的一半
+		if tween:
+			tween.kill()
+		tween = create_tween()
+		tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
+		tween.tween_property(self,"position",cell_to_world(cell),interval_time/2)
+		#更新新的方向
+		cell_position = cell
+		direction = new_direction
+		play_note()
+
 #endregion
 
 func on_beat() -> void:
@@ -50,7 +88,7 @@ func on_beat() -> void:
 	if not alive:
 		return
 	try_move()
-
+	
 func try_move() -> void:
 	var target_cell_position := cell_position + direction
 	#判定终点有无物体（箱子/玩家）
@@ -67,7 +105,6 @@ func try_move() -> void:
 			return
 		if target_game_object.sound_deflection:
 			sound_deflection(target_game_object.sound_deflection)
-			move_to(target_cell_position)
 			return
 	
 	#判定终点有无墙体（单向门/机关门/次序门）
@@ -108,6 +145,7 @@ func try_move() -> void:
 				return
 			if data.get_custom_data("sound_deflection"):
 				sound_deflection(data.get_custom_data("sound_deflection"))
+				return
 	move_to(target_cell_position)
 
 func move_to(cell: Vector2i):
@@ -153,20 +191,13 @@ func sound_reflection() -> void:
 	tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
 	tween.tween_property(self,"position",cell_to_world(cell_position),interval_time/2)
 
-func sound_deflection(deflect_map: Vector4i) -> void: #折射
-	var i = dir_to_index(direction)
-	if i == -1:
-		return
-	var new_index = deflect_map[i]
-	direction = index_to_dir(new_index)
-	play_note()
-
 #func _on_area_2d_area_entered(area: Area2D) -> void:
 	#if not alive:
 		#return
 	#dead()
 
 func play_note() -> void:
+	AudioManager.play_sfx("note_" + str(note_number))
 	EventManager.play_note(note_number)
 
 func dead() -> void:
