@@ -1,6 +1,6 @@
 extends "res://Script/game_object.gd"
 
-var notes := [true,true,true,true] #右，上，左，下
+var notes := [false,false,false,false] #右，上，左，下
 
 @onready var right: Sprite2D = $Node/Right
 @onready var up: Sprite2D = $Node/Up
