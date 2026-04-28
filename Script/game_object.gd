@@ -14,7 +14,6 @@ var map: TileMapLayer
 @onready var cell_position: Vector2i
 @onready var interval_time:float = 60.0 / BeatManager.bpm
 
-
 func set_map(m: TileMapLayer): #初始化地图函数，依赖注入
 	map = m
 	# 初始化位置
